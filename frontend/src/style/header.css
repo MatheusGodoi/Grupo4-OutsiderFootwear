@@ -1,0 +1,118 @@
+/* CSS files add styling rules to your content */
+.container {
+  display: block;
+
+}
+
+a, button {
+  text-decoration: none;
+  border: none;
+  background: none;
+}
+
+span {
+  color: var(--light-gray);
+  font-weight: 500;
+}
+
+.iconHeader {
+  display: flex;
+}
+
+#logo{
+/*   margin-left: 160px; */
+    margin-left: 140%;
+}
+
+#logo, img {
+  width: 11rem; 
+  height: 11rem;
+}
+
+.leftButtons {
+  padding-right: 50%;
+}
+
+.rightButtons {
+/*  NAO MEXER  */
+  height: 50px;
+  width: 500px;
+  
+/*   display: flex; */
+/*   align-items: center; */
+
+  margin-top: 5%;
+  margin-right: 10px;
+/*   margin-left: 10%; */
+}
+
+#signIn {
+  float: left;
+
+  margin-left: 70.3%;
+}
+
+#signIn img{
+  float: left;
+  
+  width: 28px; 
+  height: 28px;
+
+  
+  transition: filter 0.4s;
+}
+
+#signIn img:hover {
+  filter: brightness(0.8);
+}
+
+#signIn span {
+  float: left;
+  margin-top: 8px;
+  margin-left: 5px;
+}
+
+#cart {
+  float: right;
+  
+/* imagens de tamanhos diferentes, portanto há necessidade de alinhamento   */
+  margin-top: -3px;
+}
+
+#cart img {
+  width: 33px; 
+  height: 32px;
+  
+  
+  transition: filter 0.4s;
+}
+
+#cart img:hover {
+  filter: brightness(0.8);
+}
+
+#cart span {
+  float: right;
+  margin-top: 25%;
+  margin-left: 5px;
+}
+
+.categoryHeader {
+  display: flex;
+  justify-content: center;
+  
+  margin-top: -2%
+}
+
+.categoryButton {
+  width: 153px;
+  height: 40px;
+  
+  font-weight: 500;
+  
+  transition: filter 0.4s;
+}
+
+.categoryButton:hover {
+  filter: brightness(0.8);
+}
