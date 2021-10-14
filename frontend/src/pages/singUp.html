@@ -14,6 +14,7 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../style/signUp.css">
 </head>
 
 <body>
@@ -55,5 +56,25 @@
     </header>
 
     <body>
+        <div class="signupContainer">
+            <img src="../../assets/signUpPicture.svg" alt="signup-card-photo">
+            <div class="signupCard">
+                <h4>Sign up</h4>
 
+                <form class="signupCardForm" action="../pages/index.html">
+                    <label for="fname">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" id="iname" name="iname" value=""><br>
+                    <label for="fpass">Password</label>
+                    <input type="text" id="ipass" name="ipass" value=""><br>
+                    <label for="femail">Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" id="iemail" name="iemail" value=""><br>
+                    <label for="faddress">Address&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" id="iaddress" name="iaddress" value=""><br>
+                    <label for="fphone">Phone&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="text" id="iphone" name="iphone" value=""><br>
+                    <input type="submit" class="apply" value="Apply">
+                </form>
+            </div>
+        </div>
+    </body>
 </html>

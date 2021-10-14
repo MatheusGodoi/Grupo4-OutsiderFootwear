@@ -1,0 +1,80 @@
+.signinContainer  {
+    padding-left: 10%;
+    padding-top: 5%;
+    display: flex;
+}
+
+.signinContainer img {
+    width: 40%;
+    height: 13%;
+}
+
+.signinCard  {
+    /* background-color: red; */
+    width: 38rem;
+    height: 33rem;
+    margin-left: 10%;
+    border-radius: 2%;
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.signinCard  h4 {
+    padding-top: 44px;
+    padding-left: 33px;
+}
+
+.signinCard form {
+    padding-top: 100px;
+}
+
+.signinCard form input {
+    height: 53px;
+    background-color: #F0F0F0;
+    border-color: #f0f0f0e5;
+}
+
+
+.signinCard form label {
+    padding-left: 44px;
+    padding-right: 44px;
+}
+
+.signinCard form input {
+    width: 300px;
+    margin-left: 20px;
+    border-radius: 2%;
+    border-width: 1px;
+    border-color: #f0f0f0e5;
+}
+
+.signinCard .login {
+    height: 55px;
+    width: 144px;
+    margin-left: 190px;
+    color: var(--text-black);
+    background-color: var(--green);
+    border-radius: 5%;
+    border-width: 0px;
+}
+
+.signinCardForm span {
+    text-decoration: underline;
+    margin-left: 7px;
+    font-size: 14px;
+}
+
+.signinCardBottom button {
+    margin-top: 9%;
+    margin-left: 25px;
+    margin-right: 20px;
+    height: 50px;
+    width: 35rem;
+    color: var(--light-gray);
+    font-size: 15px;
+}
+.signinCardBottom span {
+    color: var(--text-black);
+    text-decoration: underline;
+    font-size: 15px;
+}
+
