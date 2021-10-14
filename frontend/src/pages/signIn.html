@@ -14,6 +14,7 @@
     <!-- import the webpage's stylesheet -->
     <link rel="stylesheet" href="../style/global.css">
     <link rel="stylesheet" href="../style/header.css">
+    <link rel="stylesheet" href="../style/signIn.css">
 </head>
 
 <body>
@@ -55,5 +56,27 @@
     </header>
 
     <body>
+        <div class="signinContainer">
+            <img src="../../assets/signInPicture.svg" alt="signin-card-photo">
+            <div class="signinCard">
+                <h4>Sign in</h4>
 
+                <form class="signinCardForm" action="../pages/index.html">
+                  <label for="femail">Email:&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;</label>
+                  <input type="text" id="iemail" name="iemail" value=""><br><br>
+                  <label for="fpass">Password:</label>
+                  <input type="text" id="ipass" name="ipass" value=""><br><br>
+                  <input type="submit" class="login" value="Login">
+                  <span>Forgot password?</span>
+
+                </form>
+
+                <div class="signinCardBottom">
+                    <a href="../pages/singUp.html">
+                        <button type="button">New here?&nbsp;&nbsp;<span>Sign up</span></button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </body>
 </html>
