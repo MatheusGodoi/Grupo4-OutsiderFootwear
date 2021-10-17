@@ -3,7 +3,8 @@ Projeto dedicado para disciplina de Web Development do ICMC, USP São Carlos
 
 ### Grupo 4
 Matheus Vinicius Gouvea de Godoi  - 10295217<br>
-Hugo de Azevedo Vitulli           - 10295221
+Hugo de Azevedo Vitulli           - 10295221<br>
+Henrique Hiram Libutti Núñez      - 11275300
 
 ---
 
