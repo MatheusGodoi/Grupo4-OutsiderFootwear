@@ -23,6 +23,6 @@ Planejamos desenvolver a jornada de um usuário desde o cadastro até a compra d
 
 ## Project Report
 
-Link para o relatório do projeto: [Project Report](https://docs.google.com/document/d/1yoO7F3VvTQwwP1Ou5hAVRDKiY5JLPLHwN-URF7ywvEs)<br>
+Link para o relatório do projeto: [Project Report PDF](.//Project%20Report%20-%20Outsider%20Footwear.pdf) ou [Project Report Drive](https://docs.google.com/document/d/1yoO7F3VvTQwwP1Ou5hAVRDKiY5JLPLHwN-URF7ywvEs)<br>
 Link para o Mockup: [Mockup](https://www.figma.com/file/yU54ILUCOEfFzRD69cfnD3/Outsider-Footwear?node-id=12918%3A2)<br>
 Link para o Diagrama de Navegação: [Navigation Diagram](https://www.figma.com/proto/yU54ILUCOEfFzRD69cfnD3/Outsider-Footwear?node-id=12918%3A24&scaling=min-zoom&page-id=12918%3A2&starting-point-node-id=12918%3A24)<br>
