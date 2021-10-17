@@ -1,3 +1,9 @@
+<!-- 
+    Henrique Hiram Libutti Núñez - 11275300
+    Hugo de Azevedo Vitulli - 10295221
+    Matheus Vinicius - 10295217
+ -->
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,20 +20,23 @@
   <!-- import the webpage's stylesheet -->
   <link rel="stylesheet" href="../style/global.css">
   <link rel="stylesheet" href="../style/header.css">
+  <link rel="stylesheet" href="../style/homepage.css">
+  <link rel="stylesheet" href="../style/footer.css">
 </head>
 
 <body>
+  <!-- HEADER -->
   <header class="container">
     <!--     LOGO, SIGN IN, CART       -->
     <div class="iconHeader">
       <div class="leftButtons">
-        <a id="logo" href="">
+        <a id="logo" href="./index.html">
           <img src="../../assets/logo.svg" alt="ousider-footwear-logo">
         </a>
       </div>
 
       <div class="rightButtons">
-        <a id="signIn" href="">
+        <a id="signIn" href="./signIn.html">
           <img src="../../assets/signIn.svg" alt="sign-in">
 
           <span>
@@ -53,6 +62,181 @@
     </div>
     <hr style="margin-top: 15px; width: 100%; color: #BDBDBD; filter: drop-shadow(0px 1px 1px #BDBDBD);">
   </header>
+
+  <!-- ORDENADOR DE PRODUTOS -->
+  <div class="optionList">
+    <select id="orderList">
+      <option value="priceLowHigh">Sort By: Price Low-High</option>
+      <option value="priceHighLow">Sort By: Price High-Low</option>
+      <option value="mostPopular">Sort By: Most Popular</option>
+    </select>
+
+    <p>6 results</p>
+  </div>
+
+  <!-- LISTA DE PRODUTOS -->
+  <div class="productListContainer">
+    <div class="productList">
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+      <li>
+        <a href="">
+          <img class="productImg" src="../../assets/product-img-1.png" alt="product">
+        </a>
+
+        <p>
+          Product Name
+        </p>
+
+        <button class="buyButton" type="button">
+          <p class="price">
+            $69.00
+          </p>
+
+          <img class="addToCartImg" src="../../assets/add-to-cart.svg" alt="add-to-cart">
+
+          <p>
+            0
+          </p>
+        </button>
+      </li>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footerContainer">
+    <img class="logoFooter" src="../../assets/logo-footer.png" alt="footer-logo">
+
+    <span></span>
+
+    <div class="followUsContainer">
+      <p>Follow Us</p>
+      <div class="logos">
+        <img class="logoSocialMedia" src="../../assets/facebook-logo.png" alt="facebook">
+        <img class="logoSocialMedia" src="../../assets/linkedin-logo.png" alt="linkedin">
+        <img class="logoSocialMedia" src="../../assets/twitter-logo.png" alt="twitter">
+        <img id="youtubeLogo" class="logoSocialMedia" src="../../assets/youtube-logo.png" alt="youtube">
+      </div>
+    </div>
+
+    <span></span>
+
+    <div class="contactUsContainer">
+      <p id="contactUsTitle">Contact Us</p>
+      <div class="contactUs">
+        <p class="innerText">
+          Phone<br><br>(xx) xxxx-xxxx
+        </p class="innerText">
+        Email<br><br>outsiderfootwear@mail.com
+        <p>
+      </div>
+      </p>
+    </div>
+  </div>
 
   <body>
 
