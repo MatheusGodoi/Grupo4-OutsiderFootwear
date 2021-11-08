@@ -1,9 +1,9 @@
 import { Container } from "./styles"
 
-export default function Cart() {
+export default function PurchaseHistory() {
     return (
         <Container>
-            Você está no Cart
+            Você está no Purchase History
         </Container>
     )
 }

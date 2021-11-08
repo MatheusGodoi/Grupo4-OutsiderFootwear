@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { formatPrice } from '../../util/format';
 import { api } from '../../services/api';
 
-import { Button, OptionList, ProductList, ProductListContainer } from "./style"
+import { Button, OptionList, ProductList, ProductListContainer } from "./styles"
 import addToCart from '../../assets/addToCart.svg'
 
 interface Product {
@@ -50,7 +50,7 @@ export default function Home() {
             <ProductListContainer>
                 <ProductList>
                     {products.map(product => (
-                        <li>
+                        <li key={product.id}>
                             <a href="">
                                 <img src={product.image} alt="product" />
                             </a>

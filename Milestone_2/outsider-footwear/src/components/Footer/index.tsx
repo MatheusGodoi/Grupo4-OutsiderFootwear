@@ -1,9 +1,9 @@
 import { Container } from "./styles"
 
-export default function Cart() {
+export default function Footer() {
     return (
         <Container>
-            Você está no Cart
+            Você está no Footer
         </Container>
     )
 }

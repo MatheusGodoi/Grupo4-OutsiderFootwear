@@ -1,9 +1,9 @@
 import { Container } from "./styles"
 
-export default function Cart() {
+export default function ManageProducts() {
     return (
         <Container>
-            Você está no Cart
+            Você está no Manage Products
         </Container>
     )
 }
