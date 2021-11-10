@@ -87,15 +87,17 @@ export const Button = styled.button`
     position: absolute;
 
     p:first-of-type {
-        margin: 0 0 0 98px;
-        font-size: 24px;
+        margin: 0 0 0 90px;
+        font-size: 22px;
         font-weight: 500;
+
+        color: black;
 
         position: relative;
     }
 
     p:last-of-type {
-        margin: 4px 0 0 275px;
+        margin: 4px 0 0 270px;
 
         font-size: 16px;
         color: var(--text-gray);

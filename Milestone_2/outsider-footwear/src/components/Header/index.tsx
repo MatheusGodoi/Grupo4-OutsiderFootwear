@@ -1,5 +1,7 @@
 import { Link } from 'react-router-dom';
 
+import { useCart } from '../../hooks/useCart';
+
 import logoImg from '../../assets/logo.svg'
 import signInImg from '../../assets/signIn.svg'
 import cartImg from '../../assets/cart.svg'
@@ -14,6 +16,9 @@ import {
 
 
 export default function Header() {
+  const { cart } = useCart();
+  const cartSize = cart.length;
+
   return (
     <Container>
       <IconHeader>
@@ -36,7 +41,7 @@ export default function Header() {
             <img src={cartImg} alt="Outsider Footwear" />
 
             <p>
-              0
+              {cartSize}
             </p>
           </Link>
         </RightHeader>
