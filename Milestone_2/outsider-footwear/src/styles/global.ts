@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import 'react-toastify/dist/ReactToastify.css';
 
 export const GlobalStyle = createGlobalStyle`
     * {
@@ -30,7 +31,7 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
         background: var(--background);
-    /*     color: var(--text-gray); */
+        -webkit-font-smoothing: antialiased;
     }
 
     body, input, textarea, button {

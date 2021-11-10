@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 import { formatPrice } from '../../util/format';
 import { api } from '../../services/api';
 
+import { useCart } from '../../hooks/useCart';
+
 import { Button, OptionList, ProductList, ProductListContainer } from "./styles"
 import addToCart from '../../assets/addToCart.svg'
 
@@ -16,8 +18,13 @@ interface ProductWithPriceFormatted extends Product {
     priceFormatted: string;
 }
 
+interface CartItemsAmount {
+    [key: number]: number;
+}
+
 export default function Home() {
     const [products, setProducts] = useState<ProductWithPriceFormatted[]>([]);
+    const { addProduct, cart } = useCart();
 
     useEffect(() => {
         async function loadProducts() {
@@ -32,6 +39,17 @@ export default function Home() {
 
         loadProducts();
     }, []);
+
+    const cartItemsAmount = cart.reduce((sumAmount, product) => {
+        const newSumAmount = { ...sumAmount };
+        newSumAmount[product.id] = product.amount;
+
+        return newSumAmount;
+    }, {} as CartItemsAmount)
+
+    function handleAddProduct(id: number) {
+        addProduct(id);
+    }
 
     return (
         <>
@@ -55,10 +73,13 @@ export default function Home() {
                                 <img src={product.image} alt="product" />
                             </a>
                             <p>{product.title}</p>
-                            <Button type="button">
+                            <Button
+                                type="button"
+                                onClick={() => handleAddProduct(product.id)}
+                            >
                                 <p>{product.priceFormatted}</p>
                                 <img src={addToCart} alt="add-to-cart" />
-                                <p>0</p>
+                                <p>{cartItemsAmount[product.id] || 0}</p>
                             </Button>
                         </li>
                     ))}
