@@ -43,9 +43,6 @@ export function StockProvider({ children }: StockProviderProps): JSX.Element {
             const updatedStock = [...stock];
             const productExists = updatedStock.find(product => productId === product.id);
 
-            const productData = await api.get(`/products/${productId}`);
-
-            const stockAmount = productData.data.amount;
             const currentAmount = productExists ? productExists.amount : 0;
             const amount = currentAmount + 1;
 

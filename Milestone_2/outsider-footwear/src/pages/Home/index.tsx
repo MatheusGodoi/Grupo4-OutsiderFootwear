@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { formatPrice } from '../../util/format';
 import { api } from '../../services/api';
-
 import { useCart } from '../../hooks/useCart';
 
 import { Button, OptionList, ProductList, ProductListContainer } from "./styles"
 import addToCart from '../../assets/addToCart.svg'
+import { Link } from 'react-router-dom';
 
 interface Product {
     id: number;
@@ -71,9 +71,15 @@ export default function Home() {
                 <ProductList>
                     {products.map(product => (
                         <li key={product.id}>
-                            <a href="">
+                            <Link
+                                to="/productinfo"
+                                onClick={() => {
+                                    localStorage.setItem("@Group4:productInfo",
+                                        JSON.stringify(product))
+                                }}
+                            >
                                 <img src={product.image} alt="product" />
-                            </a>
+                            </Link>
                             <p>{product.title}</p>
                             <Button
                                 type="button"

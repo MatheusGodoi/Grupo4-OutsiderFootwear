@@ -5,6 +5,7 @@ import ManageAccount from './pages/ManageAccount';
 import ManageAccountAdmin from './pages/ManageAccountAdmin';
 import ManageProducts from './pages/ManageProducts';
 import ManageUsers from './pages/ManageUsers';
+import { ProductInfo } from './pages/ProductsInfo';
 import PurchaseHistory from './pages/PurchaseHistory';
 import PurchaseHistoryAdmin from './pages/PurchaseHistoryAdmin';
 import SignIn from './pages/SignIn'
@@ -23,6 +24,7 @@ export default function CustomRoutes() {
             <Route path="/manageusers" element={<ManageUsers />} />
             <Route path="/purchasehistory" element={<PurchaseHistory />} />
             <Route path="/purchasehistoryadmin" element={<PurchaseHistoryAdmin />} />
+            <Route path="/productinfo" element={<ProductInfo />} />
         </Routes>
     );
 };

@@ -8,17 +8,17 @@ import Header from "./components/Header"
 
 import { GlobalStyle } from "./styles/global"
 
-
 export default function App() {
   return (
     <>
       <BrowserRouter>
         <StockProvider>
           <CartProvider>
-            <GlobalStyle />
-            <Header />
 
+            <Header />
+            <GlobalStyle />
             <CustomRoutes />
+
             <ToastContainer autoClose={3000} />
           </CartProvider>
         </StockProvider>

@@ -135,14 +135,11 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
-    const updatePurchaseHistory = async () => {
-        const updatedHistoryList = [...historyList];
-
-        updatedHistoryList.map(product => {
-            console.log(product);
-        })
+    const updatePurchaseHistory = () => {
+        const updatedHistoryList = [...historyList, ...cart]
 
         setHistoryList(updatedHistoryList);
+        localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(updatedHistoryList));
     }
 
     return (
@@ -153,7 +150,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
                 addProduct,
                 removeProduct,
                 updateProductAmount,
-                updatePurchaseHistory
+                updatePurchaseHistory,
             }}
         >
             {children}
