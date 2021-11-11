@@ -2,10 +2,10 @@ import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../util/format';
 import { Container, PurchaseHistorySettings, PurchaseHistoryList, ContainerProducts, ProductTable } from "./styles"
 
-import UserMenu from '../../components/UserMenu';
+import AdminMenu from '../../components/AdminMenu';
 
 
-export default function PurchaseHistory() {
+export default function PurchaseHistoryAdmin() {
     const { historyList, updatePurchaseHistory } = useCart();
 
     const historyListUpdated = historyList.map(product => ({
@@ -16,7 +16,7 @@ export default function PurchaseHistory() {
 
     return (
         <Container>
-            <UserMenu />
+            <AdminMenu />
 
             <PurchaseHistorySettings>
 

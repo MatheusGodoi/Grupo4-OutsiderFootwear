@@ -17,7 +17,7 @@ interface Product {
 }
 
 export default function Cart() {
-    const { cart, removeProduct, updateProductAmount } = useCart();
+    const { cart, removeProduct, updateProductAmount, historyList, updatePurchaseHistory } = useCart();
 
 
     const cartFormatted = cart.map(product => ({
@@ -113,7 +113,21 @@ export default function Cart() {
                 </ProductTable>
 
                 <footer>
-                    <button type="button">CHECKOUT</button>
+                    <button
+                        type="button"
+                        onClick={() => {
+                            if (historyList) {
+                                updatePurchaseHistory();
+                                console.log('está no historylist')
+                            } else {
+                                localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(cart))
+                                console.log('está FORA DO historylist')
+                            }
+                        }
+                        }
+                    >
+                        CHECKOUT
+                    </button>
 
                     <Total>
                         <p>TOTAL</p>
