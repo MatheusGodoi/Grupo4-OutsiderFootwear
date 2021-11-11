@@ -1,9 +1,15 @@
-import { Container } from "./styles"
+import { Container, AccountSettingsContainer } from "./styles"
 
-export default function UserMenu() {
+export default function AdminMenu() {
     return (
         <Container>
-            Você está no User Menu
+            <AccountSettingsContainer>
+                <a>Purchase History</a>
+                <hr></hr>
+                <a><strong>Account</strong></a>
+                <a href="">Notifications</a>
+                <a>Help</a>
+            </AccountSettingsContainer>
         </Container>
     )
 }

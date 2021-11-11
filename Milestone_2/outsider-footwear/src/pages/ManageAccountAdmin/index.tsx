@@ -1,14 +1,18 @@
 import { Container, AccountSettings, AccountSettingsList } from "./styles"
-import AccountSettingsContainer from "../../components/UserMenu"
+import AccountSettingsContainer from "../../components/AdminMenu"
 import editButton from '../../assets/editButton.svg'
 
-export default function ManageAccount() {
+export default function ManageAccountAdmin() {
     return (
         <Container>
             <AccountSettings>
                 <AccountSettingsContainer/>
                 <AccountSettingsList>
-                    <h1>Account Settings</h1>
+                    <h1>Account Settings
+                        <a href="">
+                            <img src={editButton} alt="Edit Profile" />
+                        </a>
+                    </h1>
                 <table>
                     <tr><td>Username</td><td><span>Username</span></td></tr>
                     <tr><td>Email</td><td><span>email@email.com</span></td></tr>

@@ -24,6 +24,8 @@ interface CartContextData {
     addProduct: (productId: number) => Promise<void>;
     removeProduct: (productId: number) => void;
     updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
+    addStock: (productId: number) => Promise<void>;
+    updateStockAmount: ({ productId, amount }: UpdateProductAmount) => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -124,9 +126,79 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
+    const addStock = async (productId: number) => {
+        try {
+            const updatedCart = [...cart];
+            const productExists = updatedCart.find(product => productId === product.id);
+
+            const stock = await api.get(`/stock/${productId}`);
+
+            const stockAmount = stock.data.amount;
+            const currentAmount = productExists ? productExists.amount : 0;
+            const amount = currentAmount + 1;
+
+            // if (amount > stockAmount) {
+            //     toast.error('Quantity out of stock.');
+            //     return;
+            // }
+
+            if (productExists) {
+                productExists.amount = amount;
+            } else {
+                const product = await api.get(`/products/${productId}`);
+
+                const newProduct = {
+                    ...product.data,
+                    amount: 1
+                }
+                updatedCart.push(newProduct);
+            }
+
+            setCart(updatedCart);
+            localStorage.setItem('@Group4:cart', JSON.stringify(updatedCart));
+        } catch {
+            toast.error('Error adding the product stock.');
+        }
+    };
+
+    const updateStockAmount = async ({
+        productId,
+        amount,
+    }: UpdateProductAmount) => {
+        try {
+            if (amount <= 0) {
+                return;
+            }
+
+            const stock = await api.get(`/stock/${productId}`);
+
+            const stockAmount = stock.data.amount;
+
+            // if (amount > stockAmount) {
+                // toast.error('Quantity out of stock.');
+                // return;
+            // }
+
+            const updatedCart = [...cart];
+            const productExists = updatedCart.find(product => productId === product.id);
+
+            if (productExists) {
+                productExists.amount = amount;
+                setCart(updatedCart);
+                localStorage.setItem('@Group4:cart', JSON.stringify(updatedCart));
+            } else {
+                throw Error();
+            }
+        } catch {
+            toast.error('Error updating the product stock.');
+        }
+    };
+
+
+
     return (
         <CartContext.Provider
-            value={{ cart, addProduct, removeProduct, updateProductAmount }}
+            value={{ cart, addProduct, removeProduct, updateProductAmount, addStock, updateStockAmount }}
         >
             {children}
         </CartContext.Provider>
