@@ -6,12 +6,11 @@ import AdminMenu from '../../components/AdminMenu';
 
 
 export default function PurchaseHistoryAdmin() {
-    const { historyList, updatePurchaseHistory } = useCart();
+    const { historyList } = useCart();
 
     const historyListUpdated = historyList.map(product => ({
         ...product,
         priceFormatted: formatPrice(product.price),
-        subTotal: formatPrice(product.price * product.amount)
     }))
 
     return (

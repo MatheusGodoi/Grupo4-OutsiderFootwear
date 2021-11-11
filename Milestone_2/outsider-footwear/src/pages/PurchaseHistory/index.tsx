@@ -1,17 +1,21 @@
 import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../util/format';
-import { Container, PurchaseHistorySettings, PurchaseHistoryList, ContainerProducts, ProductTable } from "./styles"
-
 import UserMenu from '../../components/UserMenu';
 
+import {
+    Container,
+    PurchaseHistorySettings,
+    PurchaseHistoryList,
+    ContainerProducts,
+    ProductTable
+} from "./styles"
 
 export default function PurchaseHistory() {
-    const { historyList, updatePurchaseHistory } = useCart();
+    const { historyList } = useCart();
 
-    const historyListUpdated = historyList.map(product => ({
+    const historyListFormatted = historyList.map(product => ({
         ...product,
-        priceFormatted: formatPrice(product.price),
-        subTotal: formatPrice(product.price * product.amount)
+        priceFormatted: formatPrice(product.price)
     }))
 
     return (
@@ -35,7 +39,7 @@ export default function PurchaseHistory() {
                             </tr>
                         </thead>
                         <tbody>
-                            {historyListUpdated.map(product => (
+                            {historyListFormatted.map(product => (
                                 <tr key={product.id}>
                                     <td>
                                         <img className="productImg" src={product.image} alt={product.title} />

@@ -118,13 +118,10 @@ export default function Cart() {
                         onClick={() => {
                             if (historyList) {
                                 updatePurchaseHistory();
-                                console.log('está no historylist')
                             } else {
                                 localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(cart))
-                                console.log('está FORA DO historylist')
                             }
-                        }
-                        }
+                        }}
                     >
                         CHECKOUT
                     </button>
