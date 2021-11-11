@@ -21,9 +21,11 @@ interface UpdateProductAmount {
 
 interface CartContextData {
     cart: Product[];
+    historyList: Product[];
     addProduct: (productId: number) => Promise<void>;
     removeProduct: (productId: number) => void;
     updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
+    updatePurchaseHistory: () => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -39,12 +41,22 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return [];
     });
 
+    const [historyList, setHistoryList] = useState<Product[]>(() => {
+        const storagedList = localStorage.getItem('@Group4:purchaseHistory');
+
+        if (storagedList) {
+            return JSON.parse(storagedList);
+        }
+
+        return [];
+    });
+
     const addProduct = async (productId: number) => {
         try {
             const updatedCart = [...cart];
             const productExists = updatedCart.find(product => productId === product.id);
 
-            const stock = await api.get(`/stock/${productId}`);
+            const stock = await api.get(`/products/${productId}`);
 
             const stockAmount = stock.data.amount;
             const currentAmount = productExists ? productExists.amount : 0;
@@ -82,7 +94,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
                 const newCart = (cart.slice(0, indexFinder)).concat(cart.slice(indexFinder + 1, cart.length));
 
                 setCart(newCart);
-                localStorage.setItem('@Group4', JSON.stringify(newCart));
+                localStorage.setItem('@Group4:cart', JSON.stringify(newCart));
             } else {
                 throw Error();
             }
@@ -100,8 +112,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
                 return;
             }
 
-            const stock = await api.get(`/stock/${productId}`);
-
+            const stock = await api.get(`/products/${productId}`);
             const stockAmount = stock.data.amount;
 
             if (amount > stockAmount) {
@@ -124,9 +135,26 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
+    const updatePurchaseHistory = async () => {
+        const updatedHistoryList = [...historyList];
+
+        updatedHistoryList.map(product => {
+            console.log(product);
+        })
+
+        setHistoryList(updatedHistoryList);
+    }
+
     return (
         <CartContext.Provider
-            value={{ cart, addProduct, removeProduct, updateProductAmount }}
+            value={{
+                cart,
+                historyList,
+                addProduct,
+                removeProduct,
+                updateProductAmount,
+                updatePurchaseHistory
+            }}
         >
             {children}
         </CartContext.Provider>

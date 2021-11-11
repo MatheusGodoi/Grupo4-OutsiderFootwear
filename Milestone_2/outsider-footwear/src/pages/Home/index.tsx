@@ -40,6 +40,8 @@ export default function Home() {
         loadProducts();
     }, []);
 
+    localStorage.setItem('@Group4:stock', JSON.stringify(products));
+
     const cartItemsAmount = cart.reduce((sumAmount, product) => {
         const newSumAmount = { ...sumAmount };
         newSumAmount[product.id] = product.amount;
