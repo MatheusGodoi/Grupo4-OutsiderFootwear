@@ -26,7 +26,7 @@ export default function SignIn() {
         <PasswordInput />
         
         <p style={{gridArea: "login_button", alignSelf: "center"}}>
-          <Link to='/'>
+          <Link to='/' onClick={() => {localStorage.setItem("@Group4:loginType", "2"); window.location.reload();}}>
             <button>
               Login
             </button>

@@ -40,7 +40,7 @@ export default function SignIn() {
         <input style={{gridArea: "phone_input"}} />
 
         <p style={{gridArea: "login_button", alignSelf: "center"}}>
-          <Link to='/'>
+          <Link to='/' onClick={() => {localStorage.setItem("@Group4:loginType", "1"); window.location.reload();}}>
             <button>
               Create Account
             </button>
