@@ -31,3 +31,20 @@ Link para o Diagrama de Navegação: [Navigation Diagram](https://www.figma.com/
 
 ### Milestone 2
 Link para o relatório do projeto: [Project Report PDF](.//Milestone_2%2FProject%20Report%20-%20Outsider%20Footwear.pdf) ou [Project Report Drive](https://docs.google.com/document/d/1ccR2Xns_y1Fyk9wGvozxlP0hUqbtEEgycDfvJgbr1QQ/edit?usp=sharing)<br>
+
+**Build Procedures:** 
+Para fazer o build do projeto e executar, temos que seguir alguns passos.
+Primeiro, temos que instalar os pacotes do projeto:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn install*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm install global*<br>
+
+Depois, temos que executar o nosso Backend, que se trata apenas de uma API para ler um json e nos servir os produtos:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn server*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm run server*<br>
+
+Com o json server rodando, podemos executar o frontend e acessar o site,com o comando:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn start*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm start*<br>
