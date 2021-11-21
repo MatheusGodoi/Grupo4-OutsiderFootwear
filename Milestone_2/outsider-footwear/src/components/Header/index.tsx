@@ -29,11 +29,25 @@ export default function Header() {
         </LeftHeader>
 
         <RightHeader>
-          <Link to='/signin'>
+        <Link to='/signin'>
             <img src={signInImg} alt="Outsider Footwear" />
 
             <p>
               Sign In
+            </p>
+        </Link>
+        <Link to='/manageAccount'>
+            <img src={signInImg} alt="Outsider Footwear" />
+
+            <p>
+              User
+            </p>
+        </Link>
+        <Link to='/manageAccountAdmin'>
+            <img src={signInImg} alt="Outsider Footwear" />
+
+            <p>
+              Admin
             </p>
           </Link>
 
