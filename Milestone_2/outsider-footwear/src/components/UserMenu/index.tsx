@@ -9,7 +9,7 @@ export default function UserMenu() {
                 <hr></hr>
                 <Link to="/manageaccount"><strong>Account</strong></Link >
                 <a href="">Notifications</a>
-                <a>Help</a>
+                <a href="">Help</a>
             </AccountSettingsContainer>
         </Container>
     )

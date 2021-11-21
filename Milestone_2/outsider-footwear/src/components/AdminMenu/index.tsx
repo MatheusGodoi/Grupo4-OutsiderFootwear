@@ -9,7 +9,7 @@ export default function AdminMenu() {
                 <hr></hr>
                 <Link to="/manageaccountadmin"><strong>Account</strong></Link>
                 <a href="">Notifications</a>
-                <a>Help</a>
+                <a href="">Help</a>
                 {/* These three should appear only when the user is a system admin */}
                 <hr></hr>
                 <Link to="/manageproducts">Manage Products</Link>
