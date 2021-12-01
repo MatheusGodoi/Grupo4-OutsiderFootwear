@@ -1,0 +1,84 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Tênis de Caminhada Leve Confortável",
+      "price": 179.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_caminhada_1.jpg",
+      "amount": 3,
+      "category": "sports"
+    },
+    {
+      "id": 2,
+      "title": "Tênis Caminhada Confortável Preto",
+      "price": 139.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_caminhada_2.jpg",
+      "amount": 5,
+      "category": "sports"
+    },
+    {
+      "id": 3,
+      "title": "Tênis Caminhada Confortável Rosa",
+      "price": 219.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_caminhada_3.jpg",
+      "amount": 2,
+      "category": "sports"
+    },
+    {
+      "id": 4,
+      "title": "Tênis Casual Leve",
+      "price": 179.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_casual_1.jpg",
+      "amount": 1,
+      "category": "casual"
+    },
+    {
+      "id": 5,
+      "title": "Tênis Casual Couro",
+      "price": 139.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_casual_2.jpg",
+      "amount": 5,
+      "category": "casual"
+    },
+    {
+      "id": 6,
+      "title": "Tênis Casual Azul",
+      "price": 219.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_casual_3.jpg",
+      "amount": 10,
+      "category": "casual"
+    },
+    {
+      "id": 7,
+      "title": "Tênis Nike Strike Preto",
+      "price": 319.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_top_1.jpg",
+      "amount": 3,
+      "category": "topbrand"
+    },
+    {
+      "id": 8,
+      "title": "Tênis Nike Zoom Strike Azul",
+      "price": 459.9,
+      "image": "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_top_2.jpg",
+      "amount": 1,
+      "category": "topbrand"
+    },
+    {
+      "id": 9,
+      "title": "Palmilha para sapato",
+      "price": 129.9,
+      "image": "https://github.com/MatheusGodoi/Grupo4-OutsiderFootwear/blob/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_acessorio_1.jpg?raw=true",
+      "amount": 7,
+      "category": "accessory"
+    },
+    {
+      "id": 10,
+      "title": "Meia cano longo",
+      "price": 89.9,
+      "image": "https://github.com/MatheusGodoi/Grupo4-OutsiderFootwear/blob/main/Milestone_2/outsider-footwear/src/assets/jsondb/tenis_acessorio_2.jpg?raw=true",
+      "amount": 14,
+      "category": "accessory"
+    }
+  ]
+}
