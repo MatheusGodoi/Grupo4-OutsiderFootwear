@@ -6,7 +6,7 @@ const app = express();
 const router = express.Router();
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://admin:admin@cluster0.cjgxw.mongodb.net/outsider-db');
+mongoose.connect('');
 
 const Product = require('./models/product')
 const Costumer = require('./models/customer')
