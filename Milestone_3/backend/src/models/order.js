@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const schema = new Schema({
-    costumer: {
+    customer: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer'
     },
@@ -26,10 +26,6 @@ const schema = new Schema({
             type: Number,
             require: true,
             deafault: 1
-        },
-        price: {
-            type: Number,
-            require: true,
         },
         product: {
             type: mongoose.Schema.Types.ObjectId,

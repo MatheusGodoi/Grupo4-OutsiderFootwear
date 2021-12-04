@@ -6,15 +6,11 @@ const schema = new Schema({
         type: String,
         require: true
     },
-    password: {
-        type: String,
-        require: true
-    },
     email: {
         type: String,
         require: true
     },
-    phone: {
+    password: {
         type: String,
         require: true
     },
@@ -22,14 +18,14 @@ const schema = new Schema({
         type: String,
         require: true
     },
-    birthday: {
-        type: Date,
-        require: true
-    },
-    gender: {
+    phone: {
         type: String,
         require: true
     },
+    admin: {
+        type: Boolean,
+        default: false
+    }
 });
 
 module.exports = mongoose.model('Customer', schema);

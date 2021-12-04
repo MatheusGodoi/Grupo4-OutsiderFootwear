@@ -14,9 +14,14 @@ import {
   CategoryHeader
 } from "./style";
 
+import { useEffect, useState } from 'react';
+import { useSession } from '../../hooks/useSession';
+import { Customer } from '../../../type';
+
 
 export default function Header() {
   const { cart } = useCart();
+  const { customerActive } = useSession();
   const cartSize = cart.length;
 
   return (
@@ -29,27 +34,27 @@ export default function Header() {
         </LeftHeader>
 
         <RightHeader>
-        <Link to='/signin'>
+          <Link to='/signIn'>
             <img src={signInImg} alt="Outsider Footwear" />
 
             <p>
-              Sign In
+              {customerActive?.name}
             </p>
-        </Link>
-        <Link to='/manageAccount'>
+          </Link>
+          {/* <Link to='/manageAccount'>
             <img src={signInImg} alt="Outsider Footwear" />
 
             <p>
               User
             </p>
-        </Link>
-        <Link to='/manageAccountAdmin'>
+        </Link> */}
+          {/* <Link to='/manageAccountAdmin'>
             <img src={signInImg} alt="Outsider Footwear" />
 
             <p>
               Admin
             </p>
-          </Link>
+          </Link> */}
 
           <Link to='/cart'>
             <img src={cartImg} alt="Outsider Footwear" />
