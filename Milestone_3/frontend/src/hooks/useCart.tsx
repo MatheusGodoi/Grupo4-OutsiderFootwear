@@ -1,31 +1,22 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
+import { Product } from '../../type';
 import { api } from '../services/api';
-
-export interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    amount: number;
-}
 
 interface CartProviderProps {
     children: ReactNode;
 }
 
 interface UpdateProductAmount {
-    productId: number;
+    productId: string;
     amount: number;
 }
 
 interface CartContextData {
     cart: Product[];
-    historyList: Product[];
-    addProduct: (productId: number) => Promise<void>;
-    removeProduct: (productId: number) => void;
+    addProduct: (productId: string) => Promise<void>;
+    removeProduct: (productId: string) => void;
     updateProductAmount: ({ productId, amount }: UpdateProductAmount) => void;
-    updatePurchaseHistory: () => void;
 }
 
 const CartContext = createContext<CartContextData>({} as CartContextData);
@@ -41,22 +32,14 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return [];
     });
 
-    const [historyList, setHistoryList] = useState<Product[]>(() => {
-        const storagedList = localStorage.getItem('@Group4:purchaseHistory');
-
-        if (storagedList) {
-            return JSON.parse(storagedList);
-        }
-
-        return [];
-    });
-
-    const addProduct = async (productId: number) => {
+    const addProduct = async (productId: string) => {
         try {
             const updatedCart = [...cart];
-            const productExists = updatedCart.find(product => productId === product.id);
+            const productExists = updatedCart.find(product => productId === product._id);
 
             const stock = await api.get(`/products/${productId}`);
+
+            console.log(stock.data);
 
             const stockAmount = stock.data.amount;
             const currentAmount = productExists ? productExists.amount : 0;
@@ -86,9 +69,9 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
-    const removeProduct = (productId: number) => {
+    const removeProduct = (productId: string) => {
         try {
-            const indexFinder = cart.findIndex(product => productId === product.id);
+            const indexFinder = cart.findIndex(product => productId === product._id);
 
             if (indexFinder >= 0) {
                 const newCart = (cart.slice(0, indexFinder)).concat(cart.slice(indexFinder + 1, cart.length));
@@ -121,7 +104,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
             }
 
             const updatedCart = [...cart];
-            const productExists = updatedCart.find(product => productId === product.id);
+            const productExists = updatedCart.find(product => productId === product._id);
 
             if (productExists) {
                 productExists.amount = amount;
@@ -135,22 +118,13 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
-    const updatePurchaseHistory = () => {
-        const updatedHistoryList = [...historyList, ...cart]
-
-        setHistoryList(updatedHistoryList);
-        localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(updatedHistoryList));
-    }
-
     return (
         <CartContext.Provider
             value={{
                 cart,
-                historyList,
                 addProduct,
                 removeProduct,
                 updateProductAmount,
-                updatePurchaseHistory,
             }}
         >
             {children}

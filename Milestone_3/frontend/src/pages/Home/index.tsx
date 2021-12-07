@@ -3,23 +3,17 @@ import { formatPrice } from '../../util/format';
 import { api } from '../../services/api';
 import { useCart } from '../../hooks/useCart';
 
-import { Button, OptionList, ProductList, ProductListContainer } from "./styles"
+import { Button, ProductList, ProductListContainer } from "./styles"
 import addToCart from '../../assets/addToCart.svg'
 import { Link } from 'react-router-dom';
-
-interface Product {
-    _id: number;
-    title: string;
-    price: number;
-    image: string;
-}
+import { Product } from '../../../type';
 
 interface ProductWithPriceFormatted extends Product {
     priceFormatted: string;
 }
 
 interface CartItemsAmount {
-    [key: number]: number;
+    [key: string]: number;
 }
 
 export default function Home() {
@@ -40,33 +34,19 @@ export default function Home() {
         loadProducts();
     }, []);
 
-    localStorage.setItem('@Group4:stock', JSON.stringify(products));
-
     const cartItemsAmount = cart.reduce((sumAmount, product) => {
         const newSumAmount = { ...sumAmount };
-        newSumAmount[product.id] = product.amount;
+        newSumAmount[product._id] = product.amount;
 
         return newSumAmount;
     }, {} as CartItemsAmount)
 
-    function handleAddProduct(id: number) {
+    function handleAddProduct(id: string) {
         addProduct(id);
     }
 
     return (
         <>
-            <OptionList>
-                <div>
-                    <select>
-                        <option value="priceLowHigh">Sort By: Price Low-High</option>
-                        <option value="priceHighLow">Sort By: Price High-Low</option>
-                        <option value="mostPopular">Sort By: Most Popular</option>
-                    </select>
-
-                    <p>6 results</p>
-                </div>
-            </OptionList>
-
             <ProductListContainer>
                 <ProductList>
                     {products.map(product => (

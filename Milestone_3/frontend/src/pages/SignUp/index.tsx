@@ -5,21 +5,27 @@ import signUpImg from '../../assets/login_1.svg'
 import { api } from '../../services/api';
 
 import { Customer } from '../../../type'
+import { toast } from 'react-toastify';
 
 async function registerUser() {
-  const user = {
-    name: (document.getElementById("input-name") as HTMLInputElement).value,
-    email: (document.getElementById("input-email") as HTMLInputElement).value,
-    password: (document.getElementById("input-password") as HTMLInputElement).value,
-    address: (document.getElementById("input-address") as HTMLInputElement).value,
-    phone: (document.getElementById("input-phone") as HTMLInputElement).value
-  }
+  try {
+    const user = {
+      name: (document.getElementById("input-name") as HTMLInputElement).value,
+      email: (document.getElementById("input-email") as HTMLInputElement).value,
+      password: (document.getElementById("input-password") as HTMLInputElement).value,
+      address: (document.getElementById("input-address") as HTMLInputElement).value,
+      phone: (document.getElementById("input-phone") as HTMLInputElement).value
+    }
 
-  console.log(user);
-  await api.post<Customer>('/customers', user);
+    await api.post<Customer>('/customers', user);
+
+    toast.success('Success, account created')
+  } catch {
+    toast.error('Failed trying to create account');
+  }
 }
 
-export default function SignIn() {
+export default function SignUp() {
   return (
     <Container>
 

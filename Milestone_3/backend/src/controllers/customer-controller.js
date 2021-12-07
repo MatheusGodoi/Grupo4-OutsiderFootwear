@@ -35,3 +35,16 @@ exports.post = async (req, res, next) => {
         });
     }
 }
+
+exports.put = async (req, res, next) => {
+    try {
+        await repository.update(req.params.id, req.body);
+        res.status(200).send({
+            message: 'Customer alterado com sucesso'
+        });
+    } catch (e) {
+        res.status(500).send({
+            message: 'Falha ao processar sua requisição'
+        });
+    }
+}

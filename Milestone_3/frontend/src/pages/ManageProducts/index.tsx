@@ -9,38 +9,62 @@ import {
     ProductTable
 } from "./styles"
 
-import addButton from '../../assets/addButton.svg';
-import removeButton from '../../assets/removeButton.svg';
+import trash from '../../assets/trash.svg';
 import AdminMenu from '../../components/AdminMenu';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
+import { Product } from '../../../type';
+import { toast } from 'react-toastify';
+import { Link } from 'react-router-dom';
 
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    amount: number;
+
+interface ProductWithPriceFormatted extends Product {
+    priceFormatted: string;
 }
 
-export default function ManageAccountAdmin() {
-    const { stock, updateProductAmountToStock } = useStock();
+export default function ManageProducts() {
+    const [products, setProducts] = useState<ProductWithPriceFormatted[]>([]);
 
-    const stockFormatted = stock.map(product => ({
-        ...product,
-        priceFormatted: formatPrice(product.price)
-    }));
+    useEffect(() => {
+        async function loadProducts() {
+            const response = await api.get<Product[]>('/products');
 
-    function handleStockIncrement(product: Product) {
-        updateProductAmountToStock({
-            productId: product.id,
-            amount: product.amount + 1
-        })
+            const data = response.data.map(product => ({
+                ...product,
+                priceFormatted: formatPrice(product.price)
+            }))
+            setProducts(data);
+        }
+
+        loadProducts();
+    }, []);
+
+    async function updateProduct(product: Product) {
+        try {
+            const title_id = "input[id=title" + product._id + "]";
+            const amount_id = "input[id=amount" + product._id + "]";
+            const price_id = "input[id=price" + product._id + "]";
+            const updatedProduct = {
+                title: document.querySelector<HTMLInputElement>(title_id)?.value,
+                amount: Number(document.querySelector<HTMLInputElement>(amount_id)?.value),
+                price: Number(document.querySelector<HTMLInputElement>(price_id)?.value),
+            }
+
+            await api.put<Product>(`/products/${product._id}`, updatedProduct);
+            toast.success('Success updating product informations')
+        } catch {
+            toast.error('Failed trying to product informations');
+        }
     }
 
-    function handleStockDecrement(product: Product) {
-        updateProductAmountToStock({
-            productId: product.id,
-            amount: product.amount - 1
-        })
+    async function removeProduct(product: Product) {
+        try {
+            console.log(product._id);
+            await api.delete(`/products/${product._id}`);
+            toast.success('Success deleting product')
+        } catch {
+            toast.error('Failed trying to delete product');
+        }
     }
 
     return (
@@ -62,52 +86,53 @@ export default function ManageAccountAdmin() {
                             </tr>
                         </thead>
                         <tbody>
-                            {stockFormatted.map(product => (
-                                <tr key={product.id}>
+                            {products.map(product => (
+                                <tr key={product._id}>
                                     <td>
                                         <img className="productImg" src={product.image} alt={product.title} />
                                     </td>
                                     <td>
                                         <input
+                                            id={"title" + product._id}
                                             className="description"
-                                            value={product.title}
+                                            defaultValue={product.title}
                                         />
                                     </td>
                                     <td>
                                         <div>
-                                            <button
-                                                type="button"
-                                                disabled={product.amount <= 1}
-                                                onClick={() => handleStockDecrement(product)}
-                                            >
-                                                <img className="crementImg" src={removeButton} alt="remove-button" />
-                                            </button>
                                             <input
+                                                id={"amount" + product._id}
                                                 type="text"
-                                                readOnly
-                                                value={product.amount}
+                                                defaultValue={product.amount}
                                             />
-                                            <button
-                                                type="button"
-                                                onClick={() => handleStockIncrement(product)}
-                                            >
-                                                <img className="crementImg" src={addButton} alt="add-button" />
-                                            </button>
                                         </div>
                                     </td>
                                     <td>
                                         <input
+                                            id={"price" + product._id}
                                             className="price"
-                                            value={"$" + product.price}>
+                                            defaultValue={product.price}
+                                        >
                                         </input>
+                                        <button id="update-button" onClick={() => updateProduct(product)}> Update </button>
+                                        <button
+                                            type="button"
+                                            data-testid="remove-product"
+                                            onClick={() => removeProduct(product)}
+                                        >
+                                            <img className="crementImg" src={trash} alt="trash" />
+                                        </button>
                                     </td>
+
                                 </tr>
+
                             ))}
                         </tbody>
                     </ProductTable>
 
                     <footer>
-                        <button type="button">New product</button>
+
+                        <Link to="/createnewproduct"><button>Create Product</button></Link>
                     </footer>
                 </ContainerProducts>
             </ManageProductsSettings>

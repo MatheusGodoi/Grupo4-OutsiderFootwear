@@ -119,6 +119,26 @@ export const ProductTable = styled.table`
       color: var(--text-gray);
       font-weight: 500;
     }
+
+    #update-button {
+        margin-left: 20px;
+        width: 150px;
+        height: 50px;
+        text-align: center;
+  
+        background: var(--green);
+        color: var(--background);
+  
+        border: 0;
+        border-radius: 4px;
+        font-weight: bold;
+  
+        transition: 0.2s;
+      }
+  
+      button:hover {
+          filter: brightness(0.8);
+      }
   }
 
   span {
@@ -159,5 +179,9 @@ export const ProductTable = styled.table`
     background: none;
     border: 0;
     padding: 6px;
+  }
+
+  button:hover {
+          filter: brightness(0.8);
   }
 `;

@@ -21,4 +21,18 @@ exports.create = async (data) => {
     await customer.save();
 }
 
+exports.update = async (id, data) => {
+    await Customer.findByIdAndUpdate(id, {
+        $set: {
+            name: data.name,
+            email: data.email,
+            password: data.password,
+            address: data.address,
+            phone: data.phone,
+            birthday: data.birthday,
+            gender: data.gender,
+            status: data.status,
+        }
+    });
+}
 

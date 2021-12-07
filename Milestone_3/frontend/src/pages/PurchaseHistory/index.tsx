@@ -1,6 +1,8 @@
-import { useCart } from '../../hooks/useCart';
 import { formatPrice } from '../../util/format';
 import UserMenu from '../../components/UserMenu';
+import { Order } from '../../../type';
+import { useEffect, useState } from 'react';
+import { api } from '../../services/api';
 
 import {
     Container,
@@ -11,12 +13,34 @@ import {
 } from "./styles"
 
 export default function PurchaseHistory() {
-    const { historyList } = useCart();
+    const [order, setOrder] = useState<Order[]>([]);
 
-    const historyListFormatted = historyList.map(product => ({
-        ...product,
-        priceFormatted: formatPrice(product.price)
-    }))
+    useEffect(() => {
+        async function loadProducts() {
+            console.log("teste 1");
+            const allOrders = await api.get<Order[]>('/orders');
+            const customerFromStorage = localStorage.getItem('@Grupo4:customer');
+
+            console.log("teste" + allOrders);
+
+            if (customerFromStorage) {
+                const customer = JSON.parse(customerFromStorage);
+                const orderList: Order[] = [];
+
+                allOrders.data.map(order => {
+                    if (customer._id == order.customer) {
+                        orderList.push(order);
+                    }
+                });
+
+                setOrder(orderList);
+            } else {
+                alert('Erro')
+            }
+        }
+
+        loadProducts();
+    }, []);
 
     return (
         <Container>
@@ -39,24 +63,24 @@ export default function PurchaseHistory() {
                             </tr>
                         </thead>
                         <tbody>
-                            {historyListFormatted.map(product => (
-                                <tr key={product.id}>
+                            {order.map(product => (product.items.map(items => {
+                                <tr key={product._id}>
                                     <td>
-                                        <img className="productImg" src={product.image} alt={product.title} />
+                                        {/* <img className="productImg" src={items.image} alt={items.title} /> */}
                                     </td>
                                     <td>
-                                        <p>{product.title}</p>
+                                        {/* <p>{items.title}</p> */}
                                     </td>
                                     <td>
                                         <div>
-                                            <p>{product.amount}</p>
+                                            {/* <p>{items.amount}</p> */}
                                         </div>
                                     </td>
                                     <td>
-                                        <strong>{product.priceFormatted}</strong>
+                                        {/* <strong>{items.priceFormatted}</strong> */}
                                     </td>
                                 </tr>
-                            ))}
+                            })))}
                         </tbody>
                     </ProductTable>
 

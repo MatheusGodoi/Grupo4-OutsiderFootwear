@@ -9,18 +9,18 @@ exports.get = async () => {
     return res;
 }
 
-exports.getBySlug = async (slug) => {
-    const res = await Product
-        .findOne({
-            slug: slug,
-            ative: true,
-        }, 'title description price slug tags');
-    return res;
-}
+// exports.getBySlug = async (slug) => {
+//     const res = await Product
+//         .findOne({
+//             slug: slug,
+//             ative: true,
+//         }, 'title description price slug tags');
+//     return res;
+// }
 
 exports.getById = async (id) => {
     const res = await Product
-        .findById(id, 'title description price slug tags');
+        .findById(id, 'title description price slug tags amount image');
     return res;
 }
 
@@ -33,13 +33,12 @@ exports.update = async (id, data) => {
     await Product.findByIdAndUpdate(id, {
         $set: {
             title: data.title,
-            description: data.description,
+            amount: data.amount,
             price: data.price,
-            slug: data.slug
         }
     });
 }
 
 exports.delete = async (id) => {
-    await Product.findOneAndRemove(id);
+    await Product.findByIdAndDelete(id);
 }

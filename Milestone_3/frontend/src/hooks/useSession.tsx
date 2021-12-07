@@ -1,35 +1,62 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
+import { toast } from 'react-toastify';
 import { Customer } from '../../type';
+import { api } from '../services/api';
+
+interface SessionProviderProps {
+    children: ReactNode;
+}
 
 interface SessionContextData {
-    customerActive?: Customer;
-    customerSession: () => void;
+    session: Customer;
+    updateSession: () => void;
 }
 
 const SessionContext = createContext<SessionContextData>({} as SessionContextData);
 
-export function SessionProvider(): JSX.Element {
-    const [customerActive, setCustomerActive] = useState<Customer>()
+export function SessionProvider({ children }: SessionProviderProps): JSX.Element {
+    const [session, setSession] = useState<Customer>(() => {
+        console.log('atualizando session')
+        const storagedSession = localStorage.getItem('@Group4:customer');
 
-    function customerSession() {
-        const customer = localStorage.getItem('@Grupo4:customer');
-
-        if (customer) {
-            console.log("JAZONADO " + JSON.parse(customer));
-            setCustomerActive(JSON.parse(customer));
-        } else {
-            console.log('sem customer')
-            return;
+        if (storagedSession) {
+            return JSON.parse(storagedSession);
         }
+
+        return;
+    });
+
+    const updateSession = () => {
+        const data = localStorage.getItem('@Grupo4:customer');
+
+        if (data) {
+            setSession(JSON.parse(data));
+        }
+        // else {
+        //     const obj = {
+        //         _id: "",
+        //         name: "",
+        //         admin: false,
+        //         email: "",
+        //         password: "",
+        //         phone: "",
+        //         address: "",
+        //         status: false,
+        //         gender: "",
+        //         birthday: 
+        //     }
+        //     setSession(obj);
+        // }
     }
 
     return (
         <SessionContext.Provider
             value={{
-                customerActive,
-                customerSession,
+                session,
+                updateSession,
             }}
         >
+            {children}
         </SessionContext.Provider>
     );
 }

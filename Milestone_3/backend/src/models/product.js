@@ -15,14 +15,13 @@ const schema = new Schema({
     slug: {
         message: 'O slug é obrigatório',
         type: String,
-        required: true,
         trim: true,
         index: true,
         unique: true
     },
     image: {
         type: String,
-        required: true,
+        default: "https://raw.githubusercontent.com/MatheusGodoi/Grupo4-OutsiderFootwear/main/Milestone_2/outsider-footwear/src/assets/jsondb/placeholder-image.png?raw=true",
         trim: true
     },
     price: {

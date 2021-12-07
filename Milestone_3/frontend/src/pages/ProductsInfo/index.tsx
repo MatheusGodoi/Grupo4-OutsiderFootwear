@@ -3,21 +3,14 @@ import { useCart } from '../../hooks/useCart';
 
 import { Container, ProductDetails, Button } from './styles'
 import addToCart from '../../assets/addToCart.svg'
-
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    amount: string;
-}
+import { Product } from '../../../type';
 
 interface ProductWithPriceFormatted extends Product {
     priceFormatted: string;
 }
 
 interface CartItemsAmount {
-    [key: number]: number;
+    [key: string]: number;
 }
 
 export function ProductInfo() {
@@ -33,12 +26,12 @@ export function ProductInfo() {
 
     const cartItemsAmount = cart.reduce((sumAmount, product) => {
         const newSumAmount = { ...sumAmount };
-        newSumAmount[product.id] = product.amount;
+        newSumAmount[product._id] = product.amount;
 
         return newSumAmount;
     }, {} as CartItemsAmount)
 
-    function handleAddProduct(id: number) {
+    function handleAddProduct(id: string) {
         addProduct(id);
     }
 
@@ -56,11 +49,11 @@ export function ProductInfo() {
                 <p className="amount">{productInfo.amount} in Stock</p>
                 <Button
                     type="button"
-                    onClick={() => handleAddProduct(productInfo.id)}
+                    onClick={() => handleAddProduct(productInfo._id)}
                 >
                     <p>{productInfo.priceFormatted}</p>
                     <img src={addToCart} alt="add-to-cart" />
-                    <p>{cartItemsAmount[productInfo.id] || 0}</p>
+                    <p>{cartItemsAmount[productInfo._id] || 0}</p>
                 </Button>
             </ProductDetails>
         </Container>

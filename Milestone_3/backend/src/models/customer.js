@@ -22,9 +22,19 @@ const schema = new Schema({
         type: String,
         require: true
     },
+    birthday: {
+        type: Date,
+    },
+    gender: {
+        type: String,
+    },
     admin: {
         type: Boolean,
         default: false
+    },
+    status: {
+        type: Boolean,
+        default: true
     }
 });
 

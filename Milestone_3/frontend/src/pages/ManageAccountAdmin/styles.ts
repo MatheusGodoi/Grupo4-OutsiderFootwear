@@ -41,4 +41,24 @@ export const AccountSettingsList = styled.div`
         color: #B1B1B1;
         margin-left: 10px;
     }
+
+    button {
+        margin-top: 50px;
+        width: 150px;
+        height: 50px;
+        text-align: center;
+  
+        background: var(--green);
+        color: var(--background);
+  
+        border: 0;
+        border-radius: 4px;
+        font-weight: bold;
+  
+        transition: 0.2s;
+      }
+  
+      button:hover {
+          filter: brightness(0.8);
+      }
 `;

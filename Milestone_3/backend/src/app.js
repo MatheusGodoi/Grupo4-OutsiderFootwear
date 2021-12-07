@@ -6,7 +6,7 @@ const cors = require('cors');
 const router = express.Router();
 const mongoose = require('mongoose');
 
-mongoose.connect('');
+mongoose.connect('mongodb+srv://admin:admin@cluster0.cjgxw.mongodb.net/outsider-db');
 
 const Product = require('./models/product')
 const Costumer = require('./models/customer')

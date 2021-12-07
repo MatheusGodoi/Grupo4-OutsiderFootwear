@@ -8,10 +8,13 @@ import { toast } from 'react-toastify';
 import { useSession } from '../../hooks/useSession';
 
 export default function SignIn() {
-  const { customerSession } = useSession();
+  const { updateSession } = useSession();
+
+  function handleUpdateSession() {
+    updateSession();
+  }
 
   async function loginUser() {
-
     try {
       const userLogin = {
         email: (document.getElementById("input-email") as HTMLInputElement).value,
@@ -20,6 +23,7 @@ export default function SignIn() {
       const user = await api.get<Customer>(`/customers/${userLogin.email}`);
 
       if (user && userLogin.password == user.data.password) {
+
         localStorage.setItem('@Grupo4:customer', JSON.stringify(user.data));
 
         window.location.replace('http://' + window.location.host + '/');
@@ -29,10 +33,6 @@ export default function SignIn() {
     } catch {
       toast.error('Failed to login.');
     }
-  }
-
-  function handleCustomerSession(): void {
-    customerSession();
   }
 
   return (
@@ -59,7 +59,7 @@ export default function SignIn() {
 
         <p style={{ gridArea: "login_button", alignSelf: "center" }}>
           {/* <Link to='/'> */}
-          <button onClick={() => { handleCustomerSession(); loginUser() }}>
+          <button onClick={() => { loginUser() }}>
             Login
           </button>
           {/* </Link> */}

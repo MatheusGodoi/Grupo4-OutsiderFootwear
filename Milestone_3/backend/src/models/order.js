@@ -6,10 +6,6 @@ const schema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Customer'
     },
-    number: {
-        type: String,
-        require: true
-    },
     createDate: {
         type: Date,
         require: true,
@@ -25,12 +21,11 @@ const schema = new Schema({
         quantity: {
             type: Number,
             require: true,
-            deafault: 1
         },
-        product: {
+        product_id: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Product'
-        },
+        }
     }]
 });
 

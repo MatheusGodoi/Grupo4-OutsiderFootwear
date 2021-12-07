@@ -3,16 +3,37 @@ import { formatPrice } from '../../util/format';
 import { Container, PurchaseHistorySettings, PurchaseHistoryList, ContainerProducts, ProductTable } from "./styles"
 
 import AdminMenu from '../../components/AdminMenu';
+import { useEffect, useState } from 'react';
+import { Order } from '../../../type';
+import { api } from '../../services/api';
 
 
 export default function PurchaseHistoryAdmin() {
-    const { historyList } = useCart();
+    const [order, setOrder] = useState<Order[]>([]);
 
-    const historyListUpdated = historyList.map(product => ({
-        ...product,
-        priceFormatted: formatPrice(product.price),
-    }))
+    useEffect(() => {
+        async function loadProducts() {
+            const allOrders = await api.get<Order[]>('/orders');
+            const customerFromStorage = localStorage.getItem('@Grupo4:customer');
 
+            if (customerFromStorage) {
+                const customer = JSON.parse(customerFromStorage);
+                const orderList: Order[] = [];
+
+                allOrders.data.map(order => {
+                    if (customer._id == order.customer) {
+                        orderList.push(order);
+                    }
+                });
+
+                setOrder(orderList);
+            } else {
+                alert('Erro')
+            }
+        }
+
+        loadProducts();
+    }, []);
     return (
         <Container>
             <AdminMenu />
@@ -34,24 +55,25 @@ export default function PurchaseHistoryAdmin() {
                             </tr>
                         </thead>
                         <tbody>
-                            {historyListUpdated.map(product => (
-                                <tr key={product.id}>
-                                    <td>
-                                        <img className="productImg" src={product.image} alt={product.title} />
-                                    </td>
-                                    <td>
-                                        <p>{product.title}</p>
-                                    </td>
-                                    <td>
-                                        <div>
-                                            <p>{product.amount}</p>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <strong>{product.priceFormatted}</strong>
-                                    </td>
-                                </tr>
-                            ))}
+                            {order.map(product => (
+                                product.items.map(item => {
+                                    <tr key={product._id}>
+                                        <td>
+                                            <img className="productImg" src={item.image} alt={item.title} />
+                                        </td>
+                                        <td>
+                                            <p>{item.title}</p>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <p>{item.amount}</p>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <strong>{item.priceFormatted}</strong>
+                                        </td>
+                                    </tr>
+                                })))}
                         </tbody>
                     </ProductTable>
 

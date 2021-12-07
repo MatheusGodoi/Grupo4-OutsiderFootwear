@@ -7,17 +7,12 @@ import addButton from '../../assets/addButton.svg';
 import removeButton from '../../assets/removeButton.svg';
 import trash from '../../assets/trash.svg';
 import { BackgroundPosition, Container, ProductTable, Total } from './styles';
-
-interface Product {
-    id: number;
-    title: string;
-    price: number;
-    image: string;
-    amount: number;
-}
+import { Order, Product } from '../../../type';
+import { api } from '../../services/api';
+import { toast } from 'react-toastify';
 
 export default function Cart() {
-    const { cart, removeProduct, updateProductAmount, historyList, updatePurchaseHistory } = useCart();
+    const { cart, removeProduct, updateProductAmount } = useCart();
 
 
     const cartFormatted = cart.map(product => ({
@@ -34,20 +29,72 @@ export default function Cart() {
 
     function handleProductIncrement(product: Product) {
         updateProductAmount({
-            productId: product.id,
+            productId: product._id,
             amount: product.amount + 1
         })
     }
 
     function handleProductDecrement(product: Product) {
         updateProductAmount({
-            productId: product.id,
+            productId: product._id,
             amount: product.amount - 1
         })
     }
 
-    function handleRemoveProduct(productId: number) {
+    function handleRemoveProduct(productId: string) {
         removeProduct(productId);
+    }
+
+    async function productCheckout(cart: Product[]) {
+        const data = localStorage.getItem('@Grupo4:customer');
+
+        try {
+            if (data && cart.length >= 1) {
+                const activeCustomer = JSON.parse(data);
+
+                const checkoutList = {
+                    customer: activeCustomer._id,
+                    items: [{}]
+                }
+
+                cart.map(product => {
+                    checkoutList.items.push({
+                        quantity: product.amount,
+                        product_id: product._id
+                    })
+                });
+
+                await api.post<Order>('/orders', checkoutList);
+
+
+                // Diminuir amount do produto
+                cart.map(product => {
+                    async function updateProductAmount() {
+                        const productObj = await api.get(`/products/${product._id}`);
+                        productObj.data.amount -= product.amount;
+
+                        console.log(productObj.data.amount);
+
+                        await api.put<Product>(`products/${product._id}`, productObj.data)
+                    }
+                    updateProductAmount();
+                })
+
+                localStorage.removeItem('@Group4:cart');
+
+                toast.success('Successful purchase');
+
+                setTimeout(() => { window.location.replace('http://' + window.location.host + '/') }, 3000);
+            } else {
+                if (!data) {
+                    toast.error('Failed trying to purchase, please try to log in');
+                } else {
+                    toast.error('Failed trying to purchase, please add some item');
+                }
+            }
+        } catch {
+            toast.error('Failed trying to purchase');
+        }
     }
 
     return (
@@ -65,7 +112,7 @@ export default function Cart() {
                     </thead>
                     <tbody>
                         {cartFormatted.map(product => (
-                            <tr key={product.id}>
+                            <tr key={product._id}>
                                 <td>
                                     <img className="productImg" src={product.image} alt={product.title} />
                                 </td>
@@ -102,7 +149,7 @@ export default function Cart() {
                                     <button
                                         type="button"
                                         data-testid="remove-product"
-                                        onClick={() => handleRemoveProduct(product.id)}
+                                        onClick={() => handleRemoveProduct(product._id)}
                                     >
                                         <img className="crementImg" src={trash} alt="trash" />
                                     </button>
@@ -116,11 +163,14 @@ export default function Cart() {
                     <button
                         type="button"
                         onClick={() => {
-                            if (historyList) {
-                                updatePurchaseHistory();
-                            } else {
-                                localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(cart))
-                            }
+                            // if (historyList) {
+                            //     updatePurchaseHistory();
+                            // } else {
+                            //     localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(cart))
+                            // }
+
+
+                            productCheckout(cart);
                         }}
                     >
                         CHECKOUT
