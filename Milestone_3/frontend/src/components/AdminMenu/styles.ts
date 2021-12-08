@@ -20,7 +20,7 @@ export const AccountSettingsContainer = styled.div`
     box-shadow: 0px 4px 4px 0px #00000040;
     border-radius: 8px;
 
-    a {
+    a, p {
         color: #494848;
         padding: 35px 0px 50px 35px;
         text-align: left;

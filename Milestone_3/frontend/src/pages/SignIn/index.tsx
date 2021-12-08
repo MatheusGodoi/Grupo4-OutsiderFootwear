@@ -1,19 +1,12 @@
 import { Link } from 'react-router-dom';
-import { Container, Button, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
+import { Container, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
 
 import signInImg from '../../assets/undraw_enter_uhqk_1.svg'
 import { Customer } from '../../../type';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
-import { useSession } from '../../hooks/useSession';
 
 export default function SignIn() {
-  const { updateSession } = useSession();
-
-  function handleUpdateSession() {
-    updateSession();
-  }
-
   async function loginUser() {
     try {
       const userLogin = {
@@ -22,7 +15,7 @@ export default function SignIn() {
       }
       const user = await api.get<Customer>(`/customers/${userLogin.email}`);
 
-      if (user && userLogin.password == user.data.password) {
+      if (user && userLogin.password === user.data.password) {
 
         localStorage.setItem('@Grupo4:customer', JSON.stringify(user.data));
 

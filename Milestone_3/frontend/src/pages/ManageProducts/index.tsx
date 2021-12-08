@@ -1,4 +1,3 @@
-import { useStock } from '../../hooks/useStock';
 import { formatPrice } from '../../util/format';
 
 import {

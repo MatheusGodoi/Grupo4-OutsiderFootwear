@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Container, Button, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
+import { Container, UserFieldsContainer } from "./styles"
 
 import signUpImg from '../../assets/login_1.svg'
 import { api } from '../../services/api';

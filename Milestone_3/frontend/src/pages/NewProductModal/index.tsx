@@ -1,12 +1,8 @@
-import { useState } from 'react'
-import { useCart } from '../../hooks/useCart';
-
 import { Container, ProductDetails } from './styles'
 import placeholderImg from '../../assets/placeholder-image.png'
 import { Product } from '../../../type';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
 
 async function createProduct() {
     try {

@@ -57,7 +57,7 @@ export default function Cart() {
                     items: [{}]
                 }
 
-                cart.map(product => {
+                cart.forEach(product => {
                     checkoutList.items.push({
                         quantity: product.amount,
                         product_id: product._id
@@ -68,7 +68,7 @@ export default function Cart() {
 
 
                 // Diminuir amount do produto
-                cart.map(product => {
+                cart.forEach(product => {
                     async function updateProductAmount() {
                         const productObj = await api.get(`/products/${product._id}`);
                         productObj.data.amount -= product.amount;

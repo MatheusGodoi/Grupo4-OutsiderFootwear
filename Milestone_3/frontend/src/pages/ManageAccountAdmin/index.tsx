@@ -1,5 +1,4 @@
 import { Container, AccountSettings, AccountSettingsList } from "./styles"
-import editButton from '../../assets/editButton.svg'
 import AdminMenu from "../../components/AdminMenu"
 import { api } from "../../services/api";
 import { toast } from "react-toastify";
