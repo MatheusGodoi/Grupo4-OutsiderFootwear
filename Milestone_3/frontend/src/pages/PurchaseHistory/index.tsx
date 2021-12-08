@@ -17,30 +17,29 @@ export default function PurchaseHistory() {
 
     useEffect(() => {
         async function loadProducts() {
-            console.log("teste 1");
             const allOrders = await api.get<Order[]>('/orders');
             const customerFromStorage = localStorage.getItem('@Grupo4:customer');
-
-            console.log("teste" + allOrders);
 
             if (customerFromStorage) {
                 const customer = JSON.parse(customerFromStorage);
                 const orderList: Order[] = [];
-
+                
                 allOrders.data.map(order => {
-                    if (customer._id == order.customer) {
+                if (customer._id == order.customer._id) {
                         orderList.push(order);
                     }
                 });
-
+                
                 setOrder(orderList);
+
             } else {
                 alert('Erro')
             }
         }
-
+        
         loadProducts();
     }, []);
+
 
     return (
         <Container>
@@ -54,33 +53,30 @@ export default function PurchaseHistory() {
 
                 <ContainerProducts>
                     <ProductTable>
-                        <thead>
+                    <thead>
                             <tr>
-                                <th>Product</th>
+                                <th>Order ID</th>
                                 <th aria-label="title" />
-                                <th>Qnt</th>
-                                <th>Subtotal</th>
+                                <th>Status</th>
+                                <th>Created Time</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {order.map(product => (product.items.map(items => {
-                                <tr key={product._id}>
-                                    <td>
-                                        {/* <img className="productImg" src={items.image} alt={items.title} /> */}
-                                    </td>
-                                    <td>
-                                        {/* <p>{items.title}</p> */}
-                                    </td>
-                                    <td>
-                                        <div>
-                                            {/* <p>{items.amount}</p> */}
-                                        </div>
-                                    </td>
-                                    <td>
-                                        {/* <strong>{items.priceFormatted}</strong> */}
-                                    </td>
-                                </tr>
-                            })))}
+                        {order.map(product => 
+                                    (
+                                    <tr key={product._id}>
+
+                                        <td>
+                                            <p>{product._id}</p>
+                                        </td>
+                                        <td>
+                                            <p>{product.status}</p>
+                                        </td>
+                                        <td>
+                                            <p>{product.createDate}</p>
+                                        </td>
+                                    </tr>
+                        ))}
                         </tbody>
                     </ProductTable>
 

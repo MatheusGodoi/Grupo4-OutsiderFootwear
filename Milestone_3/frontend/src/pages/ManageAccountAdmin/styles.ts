@@ -37,7 +37,7 @@ export const AccountSettingsList = styled.div`
         padding-left: 190px;
     }
 
-    span {
+    span, input {
         color: #B1B1B1;
         margin-left: 10px;
     }
@@ -60,5 +60,17 @@ export const AccountSettingsList = styled.div`
   
       button:hover {
           filter: brightness(0.8);
+      }
+
+      input, select {
+        text-align: left;
+        padding: 6px;
+        
+        border: 1px solid #CBCBCB;
+        border-radius: 4px;
+  
+        background-color: #f0f0f0;
+        color: var(--text-gray);
+        font-weight: 500;
       }
 `;
