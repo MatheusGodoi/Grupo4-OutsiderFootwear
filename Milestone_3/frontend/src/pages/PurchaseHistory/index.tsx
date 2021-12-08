@@ -23,8 +23,8 @@ export default function PurchaseHistory() {
                 const customer = JSON.parse(customerFromStorage);
                 const orderList: Order[] = [];
 
-                allOrders.data.map(order => {
-                    if (customer._id == order.customer._id) {
+                allOrders.data.forEach(order => {
+                    if (customer._id === order.customer._id) {
                         orderList.push(order);
                     }
                 });
@@ -55,7 +55,6 @@ export default function PurchaseHistory() {
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th aria-label="title" />
                                 <th>Status</th>
                                 <th>Created Time</th>
                             </tr>

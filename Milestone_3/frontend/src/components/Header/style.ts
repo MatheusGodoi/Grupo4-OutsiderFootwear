@@ -55,9 +55,10 @@ export const RightHeader = styled.div`
         }
 
         p {
-            margin-right: 15px;
+            margin-right: 55px;
             font-weight: 500;
         }
+
     }
 
     a:hover, button:hover {

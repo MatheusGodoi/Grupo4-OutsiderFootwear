@@ -8,8 +8,8 @@ export default function UserMenu() {
                 <Link to="/purchasehistory">Purchase History</Link >
                 <hr></hr>
                 <Link to="/manageaccount"><strong>Account</strong></Link >
-                <a>Notifications</a>
-                <a>Help</a>
+                <p>Notifications</p>
+                <p>Help</p>
             </AccountSettingsContainer>
         </Container>
     )

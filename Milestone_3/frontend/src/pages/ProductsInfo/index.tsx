@@ -14,7 +14,7 @@ interface CartItemsAmount {
 }
 
 export function ProductInfo() {
-    const [productInfo, setProductInfo] = useState<ProductWithPriceFormatted>(() => {
+    const [productInfo] = useState<ProductWithPriceFormatted>(() => {
         const storageProductInfo = localStorage.getItem('@Group4:productInfo');
 
         if (storageProductInfo) {
