@@ -21,13 +21,14 @@ import { Customer } from '../../../type';
 export default function Header() {
   const { cart } = useCart();
   const cartSize = cart.length;
+  const user = localStorage.getItem('@Grupo4:customer');
+  if (user) {
+    var parsedUser = JSON.parse(user);
+  }
+
 
   async function viewProfile() {
-    const data = localStorage.getItem('@Grupo4:customer');
-    console.log(data)
-
-    if (data) {
-      const parsedUser = JSON.parse(data);
+    if (parsedUser) {
       const userInformation = await api.get<Customer>(`/customers/${parsedUser.email}`);
 
       if (userInformation.data.admin) {
@@ -47,6 +48,8 @@ export default function Header() {
     if (data) {
       toast.success('You have logged out')
       localStorage.removeItem('@Grupo4:customer');
+
+      setTimeout(() => { window.location.replace('http://localhost:3000/manageusers') }, 2000);
     } else {
       toast.error('There is no active user to Logout');
     }
@@ -67,23 +70,9 @@ export default function Header() {
             <img src={signInImg} alt="Outsider Footwear" />
 
             <p>
-              Sign In | User Area
+              {parsedUser ? parsedUser.name : "Sign In"}
             </p>
           </Link>
-          {/* <Link to='/manageAccount'>
-            <img src={signInImg} alt="Outsider Footwear" />
-
-            <p>
-              User
-            </p>
-        </Link> */}
-          {/* <Link to='/manageAccountAdmin'>
-            <img src={signInImg} alt="Outsider Footwear" />
-
-            <p>
-              Admin
-            </p>
-          </Link> */}
 
           <Link to='/cart' >
             <img src={cartImg} alt="Outsider Footwear" />

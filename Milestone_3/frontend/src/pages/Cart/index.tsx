@@ -163,13 +163,6 @@ export default function Cart() {
                     <button
                         type="button"
                         onClick={() => {
-                            // if (historyList) {
-                            //     updatePurchaseHistory();
-                            // } else {
-                            //     localStorage.setItem('@Group4:purchaseHistory', JSON.stringify(cart))
-                            // }
-
-
                             productCheckout(cart);
                         }}
                     >

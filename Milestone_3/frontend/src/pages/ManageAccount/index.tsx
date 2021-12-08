@@ -20,8 +20,6 @@ export default function ManageAccount() {
                 const parsedUser = JSON.parse(user);
                 const userFromDb = await api.get<Customer>(`/customers/${parsedUser.email}`)
 
-                // console.log(userFromDb.data._id)
-
                 await api.put(`/customers/${userFromDb.data._id}`, updatedUser);
                 localStorage.setItem('@Grupo4:customer', JSON.stringify(updatedUser));
             }
