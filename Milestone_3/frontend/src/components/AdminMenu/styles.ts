@@ -9,6 +9,7 @@ export const AccountSettingsContainer = styled.div`
     justify-content: top;
     flex-direction: column;
     text-align: center;
+    padding-top: 30px;
 
     margin: 50px 0 50px 0;
     padding-bottom: 50px;
@@ -21,8 +22,7 @@ export const AccountSettingsContainer = styled.div`
 
     a {
         color: #494848;
-        padding-top: 70px;
-        padding-left: 50px;
+        padding: 35px 0px 50px 35px;
         text-align: left;
         text-decoration: none;
     }

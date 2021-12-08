@@ -44,7 +44,7 @@ export const RightHeader = styled.div`
 
     margin: 3.5rem 10rem 0 0;
 
-    a {
+    a, button {
         display: flex;
         align-items: center;
 
@@ -60,7 +60,7 @@ export const RightHeader = styled.div`
         }
     }
 
-    a:hover {
+    a:hover, button:hover {
         filter: brightness(0.8);
     }
 `
@@ -69,7 +69,7 @@ export const CategoryHeader = styled.div`
     display: flex;
     justify-content: center;
 
-    button {
+    #category-button {
         width: 153px;
         height: 40px;
         
@@ -78,7 +78,7 @@ export const CategoryHeader = styled.div`
         transition: filter 0.4s;
     }
 
-    button:hover {
+    #category-button:hover {
         filter: brightness(0.8);
     }
 `

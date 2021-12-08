@@ -37,6 +37,7 @@ export default function Header() {
         window.location.replace('http://' + window.location.host + '/manageAccount');
       }
     } else {
+
       window.location.replace('http://' + window.location.host + '/signIn');
     }
 
@@ -66,14 +67,12 @@ export default function Header() {
         </LeftHeader>
 
         <RightHeader>
-          <Link to='/signIn' onClick={() => viewProfile()}>
+          <button onClick={() => viewProfile()}>
             <img src={signInImg} alt="Outsider Footwear" />
-
             <p>
               {parsedUser ? parsedUser.name : "Sign In"}
             </p>
-          </Link>
-
+          </button>
           <Link to='/cart' >
             <img src={cartImg} alt="Outsider Footwear" />
 
@@ -92,11 +91,11 @@ export default function Header() {
       </IconHeader>
 
       <CategoryHeader>
-        <button type="button">Casual</button>
-        <button type="button">Sports</button>
-        <button type="button">Trending</button>
-        <button type="button">Top Brands</button>
-        <button type="button">Accessories</button>
+        <button id="category-button" type="button">Casual</button>
+        <button id="category-button" type="button">Sports</button>
+        <button id="category-button" type="button">Trending</button>
+        <button id="category-button" type="button">Top Brands</button>
+        <button id="category-button" type="button">Accessories</button>
       </CategoryHeader>
 
       <hr />
