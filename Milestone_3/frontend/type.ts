@@ -24,14 +24,8 @@ export interface Product {
 
 export interface Order {
     _id: string;
-    customer: string;
+    customer: Customer;
     status: string;
     createDate: Date;
-    items: [
-        quantity: number,
-        product: string,
-        image: string,
-        title: string,
-        price: number
-    ];
+    items: Product[];
 }
