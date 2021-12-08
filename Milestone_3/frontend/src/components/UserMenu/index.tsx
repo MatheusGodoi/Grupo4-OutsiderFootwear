@@ -1,3 +1,4 @@
+// Componente com as opções no menu do perfil do usuário sem permissão de admin
 import { Link } from "react-router-dom"
 import { Container, AccountSettingsContainer } from "./styles"
 

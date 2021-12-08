@@ -1,3 +1,4 @@
+// Chama todos componentes e páginas do sistema presentes no CustomRoutes
 import { BrowserRouter } from "react-router-dom";
 import { ToastContainer } from 'react-toastify';
 import { CartProvider } from "./hooks/useCart";

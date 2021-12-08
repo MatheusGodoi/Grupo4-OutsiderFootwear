@@ -1,3 +1,6 @@
+// Order Controller
+// Métodos CRUD para acessar o banco de dados, provindos do repositório 
+
 const repository = require('../repositories/order-repository');
 const guid = require('guid');
 

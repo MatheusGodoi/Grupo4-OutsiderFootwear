@@ -1,3 +1,4 @@
+// Tela utilizada para se passar por um modal de produto
 import { useState } from 'react'
 import { useCart } from '../../hooks/useCart';
 

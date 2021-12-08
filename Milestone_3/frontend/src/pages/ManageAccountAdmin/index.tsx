@@ -1,3 +1,4 @@
+// Tela para alteração de informações do perfil do usuário
 import { Container, AccountSettings, AccountSettingsList } from "./styles"
 import AdminMenu from "../../components/AdminMenu"
 import { api } from "../../services/api";
@@ -5,6 +6,7 @@ import { toast } from "react-toastify";
 import { Customer } from "../../../type";
 
 export default function ManageAccountAdmin() {
+    // Leitura de todos os campos do perfil e atualização no banco de dados 
     async function updateCustomer() {
         try {
             const user = localStorage.getItem('@Grupo4:customer');
@@ -31,6 +33,7 @@ export default function ManageAccountAdmin() {
 
     }
 
+    // Carregamento das informações do usuário nos inputs do perfil
     window.onload = () => {
         const data = localStorage.getItem('@Grupo4:customer');
 

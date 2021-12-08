@@ -1,3 +1,4 @@
+// Contexto global para utilização do carrinho de compras
 import React, { createContext, ReactNode, useContext, useState } from 'react';
 import { toast } from 'react-toastify';
 import { Product } from '../../type';
@@ -32,6 +33,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         return [];
     });
 
+    // Adiciona uma unidade de um produto no carrinho de compras, homepage e header
     const addProduct = async (productId: string) => {
         try {
             const updatedCart = [...cart];
@@ -67,6 +69,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
+    // Remove um produto do carrinho de compras
     const removeProduct = (productId: string) => {
         try {
             const indexFinder = cart.findIndex(product => productId === product._id);
@@ -84,6 +87,7 @@ export function CartProvider({ children }: CartProviderProps): JSX.Element {
         }
     };
 
+    // Incrementa ou decrementa uma unidade de produto do carrinho de compras
     const updateProductAmount = async ({
         productId,
         amount,

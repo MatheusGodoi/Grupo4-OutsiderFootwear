@@ -6,8 +6,10 @@ const cors = require('cors');
 const router = express.Router();
 const mongoose = require('mongoose');
 
+// Conexão com nosso banco de dados
 mongoose.connect('mongodb+srv://admin:admin@cluster0.cjgxw.mongodb.net/outsider-db');
 
+// Import models
 const Product = require('./models/product')
 const Costumer = require('./models/customer')
 const Order = require('./models/order')
@@ -17,6 +19,7 @@ const productRoute = require('./routes/product-route');
 const customerRoute = require('./routes/customer-route');
 const orderRoute = require('./routes/order-route');
 
+// Definições do nosso app
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

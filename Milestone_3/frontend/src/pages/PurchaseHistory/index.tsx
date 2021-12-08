@@ -1,3 +1,4 @@
+// Tela com as informações de histórico de compras de produtos
 import UserMenu from '../../components/UserMenu';
 import { Order } from '../../../type';
 import { useEffect, useState } from 'react';
@@ -15,6 +16,7 @@ export default function PurchaseHistory() {
     const [order, setOrder] = useState<Order[]>([]);
 
     useEffect(() => {
+        // Carrega todas as compras feitas pelo usuário acessando essa página
         async function loadProducts() {
             const allOrders = await api.get<Order[]>('/orders');
             const customerFromStorage = localStorage.getItem('@Grupo4:customer');

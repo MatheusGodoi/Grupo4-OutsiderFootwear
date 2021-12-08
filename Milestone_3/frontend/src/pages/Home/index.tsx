@@ -20,6 +20,7 @@ export default function Home() {
     const [products, setProducts] = useState<ProductWithPriceFormatted[]>([]);
     const { addProduct, cart } = useCart();
 
+    // Renderização dos produtos no primeiro carregamento da página
     useEffect(() => {
         async function loadProducts() {
             const response = await api.get<Product[]>('/products');
@@ -35,6 +36,7 @@ export default function Home() {
         loadProducts();
     }, []);
 
+    // Calculo de produtos que será enviada ao carrinho
     const cartItemsAmount = cart.reduce((sumAmount, product) => {
         const newSumAmount = { ...sumAmount };
         newSumAmount[product._id] = product.amount;
@@ -50,7 +52,7 @@ export default function Home() {
         <>
             <ProductListContainer>
                 <ProductList>
-
+                    {/* Renderização dinâmica de todos produtos cadastrados com estoque maior do que 0 */}
                     {products.map(product => (
                         product.amount > 0 ?
                             (

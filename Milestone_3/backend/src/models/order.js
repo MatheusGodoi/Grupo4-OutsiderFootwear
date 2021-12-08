@@ -1,3 +1,5 @@
+// Schema criado no nosso banco de dados para salvar as compras feitas por cada cliente
+
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 

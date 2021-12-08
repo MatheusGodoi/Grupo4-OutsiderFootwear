@@ -1,3 +1,4 @@
+// Importação de todas as páginas do site
 import { Routes, Route } from 'react-router-dom'
 import Cart from './pages/Cart';
 import Home from './pages/Home'

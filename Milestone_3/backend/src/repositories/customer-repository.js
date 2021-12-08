@@ -1,3 +1,6 @@
+// Customer Repository
+// Métodos criados para modularização do código
+
 const mongoose = require('mongoose');
 const Customer = mongoose.model('Customer');
 

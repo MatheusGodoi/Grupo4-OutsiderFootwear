@@ -14,12 +14,13 @@ import { toast } from 'react-toastify';
 export default function Cart() {
     const { cart, removeProduct, updateProductAmount } = useCart();
 
-
+    // Formata o preço do produto em dólars
     const cartFormatted = cart.map(product => ({
         ...product,
         priceFormatted: formatPrice(product.price),
         subTotal: formatPrice(product.price * product.amount)
     }))
+    // Calculo do subtotal da compra
     const total =
         formatPrice(
             cart.reduce((sumTotal, product) => {
@@ -27,6 +28,7 @@ export default function Cart() {
             }, 0)
         )
 
+    // Handlers para aumentar ou diminuir a quantidade de produtos, ou remover do carrinho
     function handleProductIncrement(product: Product) {
         updateProductAmount({
             productId: product._id,
@@ -45,6 +47,7 @@ export default function Cart() {
         removeProduct(productId);
     }
 
+    // Função de checkout, realiza a compra de todos os produtos no carrinho e gera uma compra para o banco
     async function productCheckout(cart: Product[]) {
         const data = localStorage.getItem('@Grupo4:customer');
 
@@ -67,7 +70,7 @@ export default function Cart() {
                 await api.post<Order>('/orders', checkoutList);
 
 
-                // Diminuir amount do produto
+                // Diminuir a quantidade em estqoue do produto no banco de acordo com a compra
                 cart.forEach(product => {
                     async function updateProductAmount() {
                         const productObj = await api.get(`/products/${product._id}`);

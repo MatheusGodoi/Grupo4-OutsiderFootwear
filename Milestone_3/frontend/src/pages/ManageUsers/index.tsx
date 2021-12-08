@@ -1,3 +1,4 @@
+// Tela para gerenciar usuários do sistema
 import AdminMenu from "../../components/AdminMenu"
 import { AccountSettings, AccountSettingsList } from "../ManageUsers/styles"
 import { Container, ContainerProducts, ProductTable } from "./styles"
@@ -22,6 +23,7 @@ export default function ManageUsers() {
         loadUsers();
     }, [])
 
+    // Remoção de um usuário do banco de dados
     async function deleteUser(user: Customer) {
         try {
             await api.delete(`/customers/${user._id}`);
@@ -50,6 +52,7 @@ export default function ManageUsers() {
                                 </tr>
                             </thead>
                             <tbody>
+                                {/* Carregamento dinâmico de todos os usuários cadastrados no MongoDB */}
                                 {userList.map(user => (
                                     <tr key={user._id}>
                                         <td>

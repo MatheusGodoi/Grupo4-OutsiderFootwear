@@ -1,9 +1,11 @@
+// Tela utilizada para se passar por um modal de produto
 import { Container, ProductDetails } from './styles'
 import placeholderImg from '../../assets/placeholder-image.png'
 import { Product } from '../../../type';
 import { api } from '../../services/api';
 import { toast } from 'react-toastify';
 
+// Leitura dos dados para cadastras um produto no banco de dados
 async function createProduct() {
     try {
         const titleToSlug = document.querySelector<HTMLInputElement>('input[id="input-title"]')?.value;

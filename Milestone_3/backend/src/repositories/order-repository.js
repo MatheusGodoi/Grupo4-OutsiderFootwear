@@ -1,3 +1,5 @@
+// Order Repository
+// Métodos criados para modularização do código
 const mongoose = require('mongoose');
 const Order = mongoose.model('Order');
 

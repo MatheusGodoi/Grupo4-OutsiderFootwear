@@ -1,3 +1,5 @@
+// Tipagem dos dados provenientes do MongoDB, criados globalmente para facilitar o uso em todo código
+
 export interface Customer {
     _id: string;
     name: string;

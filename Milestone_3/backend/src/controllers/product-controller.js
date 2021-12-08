@@ -1,3 +1,7 @@
+// Product Controller
+// Métodos CRUD para acessar o banco de dados, provindos do repositório 
+
+
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 const ValidatorContract = require('../validators/fluent-validator');

@@ -1,3 +1,4 @@
+// Tela de Sign In do sistema
 import { Link } from 'react-router-dom';
 import { Container, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
 
@@ -7,6 +8,7 @@ import { api } from '../../services/api';
 import { toast } from 'react-toastify';
 
 export default function SignIn() {
+  // Verifica as informações do usuário no banco de dados para autenticar e fazer login
   async function loginUser() {
     try {
       const userLogin = {

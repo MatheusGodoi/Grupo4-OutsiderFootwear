@@ -1,5 +1,5 @@
+// Componente header utilizado em todas páginas do projeto com uma unica renderização
 import { Link } from 'react-router-dom';
-
 import { useCart } from '../../hooks/useCart';
 
 import logoImg from '../../assets/logo.svg'
@@ -26,7 +26,7 @@ export default function Header() {
     var parsedUser = JSON.parse(user);
   }
 
-
+  // Redirects para entrar no perfil do usuário quando autenticado, ou redirecionar para a tela de SignIn
   async function viewProfile() {
     if (parsedUser) {
       const userInformation = await api.get<Customer>(`/customers/${parsedUser.email}`);
@@ -44,6 +44,7 @@ export default function Header() {
     return;
   }
 
+  // Logout do sistema, desloga qualquer usuário atualmente logado
   function logout() {
     const data = localStorage.getItem('@Grupo4:customer');
     if (data) {

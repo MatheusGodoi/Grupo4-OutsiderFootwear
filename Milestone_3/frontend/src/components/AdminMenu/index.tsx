@@ -1,3 +1,4 @@
+// Componente com as opções no menu do perfil do admin
 import { Link } from "react-router-dom"
 import { Container, AccountSettingsContainer } from "./styles"
 

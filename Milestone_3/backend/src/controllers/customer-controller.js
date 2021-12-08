@@ -1,3 +1,6 @@
+// Customer Controller
+// Métodos CRUD para acessar o banco de dados, provindos do repositories
+
 const ValidatorContract = require('../validators/fluent-validator');
 const repository = require('../repositories/customer-repository');
 

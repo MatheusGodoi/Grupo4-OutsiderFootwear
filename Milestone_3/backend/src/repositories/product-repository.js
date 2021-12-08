@@ -1,3 +1,5 @@
+// Product Repository
+// Métodos criados para modularização do código
 const mongoose = require('mongoose');
 const Product = mongoose.model('Product');
 

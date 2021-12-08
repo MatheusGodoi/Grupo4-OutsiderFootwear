@@ -1,3 +1,4 @@
+// Tela para gerenciamento das informações dos produtos 
 import { formatPrice } from '../../util/format';
 
 import {
@@ -21,6 +22,7 @@ interface ProductWithPriceFormatted extends Product {
     priceFormatted: string;
 }
 
+// Leitura das informações dos produtos
 export default function ManageProducts() {
     const [products, setProducts] = useState<ProductWithPriceFormatted[]>([]);
 
@@ -38,6 +40,7 @@ export default function ManageProducts() {
         loadProducts();
     }, []);
 
+    // Atualização das informações do produto
     async function updateProduct(product: Product) {
         try {
             const title_id = "input[id=title" + product._id + "]";
@@ -60,6 +63,7 @@ export default function ManageProducts() {
         setProducts(updatedProducts.data);
     }
 
+    // Método para remover um produto do banco de dados
     async function removeProduct(product: Product) {
         try {
             await api.delete(`/products/${product._id}`);
@@ -92,6 +96,7 @@ export default function ManageProducts() {
                             </tr>
                         </thead>
                         <tbody>
+                            {/* Carregamento dinâmico de todos os produtos cadastrados no MongoDB */}
                             {products.map(product => (
                                 <tr key={product._id}>
                                     <td>

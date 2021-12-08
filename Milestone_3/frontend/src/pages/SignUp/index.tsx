@@ -1,3 +1,4 @@
+// Tela de Sign Up do sistema
 import { Link } from 'react-router-dom';
 import { Container, UserFieldsContainer } from "./styles"
 
@@ -7,6 +8,7 @@ import { api } from '../../services/api';
 import { Customer } from '../../../type'
 import { toast } from 'react-toastify';
 
+// Registra o usuário no banco de dados
 async function registerUser() {
   try {
     const user = {

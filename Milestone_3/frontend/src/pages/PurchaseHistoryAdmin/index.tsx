@@ -1,3 +1,4 @@
+// Tela com as informações de histórico de compras de produtos
 import { Container, PurchaseHistorySettings, PurchaseHistoryList, ContainerProducts, ProductTable } from "./styles"
 
 import AdminMenu from '../../components/AdminMenu';
@@ -10,6 +11,7 @@ export default function PurchaseHistoryAdmin() {
     const [order, setOrder] = useState<Order[]>([]);
 
     useEffect(() => {
+        // Carrega todas as compras feitas pelo usuário acessando essa página
         async function loadProducts() {
             const allOrders = await api.get<Order[]>('/orders');
             const customerFromStorage = localStorage.getItem('@Grupo4:customer');
