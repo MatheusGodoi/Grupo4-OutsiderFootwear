@@ -55,7 +55,7 @@ export default function SignIn() {
         <p style={{ gridArea: "password_label", alignSelf: "center" }}>
           Password
         </p>
-        <PasswordInput id="input-password" />
+        <PasswordInput id="input-password" type="password" />
 
         <p style={{ gridArea: "login_button", alignSelf: "center" }}>
           {/* <Link to='/'> */}

@@ -72,5 +72,6 @@ export const AccountSettingsList = styled.div`
         background-color: #f0f0f0;
         color: var(--text-gray);
         font-weight: 500;
+        padding-left: 10px;
       }
 `;

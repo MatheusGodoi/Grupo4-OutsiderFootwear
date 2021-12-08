@@ -29,6 +29,7 @@ export const UserInput = styled.input`
   height: 40px;
   grid-area: email_input;
   align-self: center; 
+  padding-left: 10px;
 `
 
 export const PasswordInput = styled.input`
@@ -38,6 +39,7 @@ export const PasswordInput = styled.input`
   height: 40px;
   grid-area: password_input; 
   align-self: center;
+  padding-left: 10px;
 `
 
 // We can setup a grid layout so things stay as designed

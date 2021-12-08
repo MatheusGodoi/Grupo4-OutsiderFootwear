@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-    color: red;
     font-weight: 600;
+    display: flex;
+    justify-content: center;
 `;
 
 export const AccountSettings = styled.div`
@@ -10,7 +11,6 @@ export const AccountSettings = styled.div`
     justify-content: left;
     align-items: left;
     margin: 0 0 50px 99px;    
-
 `;
 
 export const AccountSettingsList = styled.div`
@@ -19,9 +19,9 @@ export const AccountSettingsList = styled.div`
     flex-direction: column;
     text-align: left;
 
-    margin: 0 0 50px 100px;
+    margin: 0 0 50px 50px;
 
-    width: 500px;
+    width: 1320px;
     height: 600px;
     color: #494848;
 
@@ -73,5 +73,6 @@ export const AccountSettingsList = styled.div`
         background-color: #f0f0f0;
         color: var(--text-gray);
         font-weight: 500;
+        padding-left: 10px;
       }
 `;
