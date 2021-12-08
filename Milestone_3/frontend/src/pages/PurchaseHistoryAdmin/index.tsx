@@ -9,31 +9,6 @@ import { api } from '../../services/api';
 
 
 export default function PurchaseHistoryAdmin() {
-    const [order, setOrder] = useState<Order[]>([]);
-
-    useEffect(() => {
-        async function loadProducts() {
-            const allOrders = await api.get<Order[]>('/orders');
-            const customerFromStorage = localStorage.getItem('@Grupo4:customer');
-
-            if (customerFromStorage) {
-                const customer = JSON.parse(customerFromStorage);
-                const orderList: Order[] = [];
-
-                allOrders.data.map(order => {
-                    if (customer._id == order.customer) {
-                        orderList.push(order);
-                    }
-                });
-
-                setOrder(orderList);
-            } else {
-                alert('Erro')
-            }
-        }
-
-        loadProducts();
-    }, []);
     return (
         <Container>
             <AdminMenu />
@@ -54,7 +29,7 @@ export default function PurchaseHistoryAdmin() {
                                 <th>Subtotal</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        {/* <tbody>
                             {order.map(product => (
                                 product.items.map(item => {
                                     <tr key={product._id}>
@@ -74,7 +49,7 @@ export default function PurchaseHistoryAdmin() {
                                         </td>
                                     </tr>
                                 })))}
-                        </tbody>
+                        </tbody> */}
                     </ProductTable>
 
                 </ContainerProducts>

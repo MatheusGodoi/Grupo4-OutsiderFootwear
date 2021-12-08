@@ -62,6 +62,7 @@ export default function ManageProducts() {
             console.log(product._id);
             await api.delete(`/products/${product._id}`);
             toast.success('Success deleting product')
+
         } catch {
             toast.error('Failed trying to delete product');
         }

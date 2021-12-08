@@ -36,3 +36,6 @@ exports.update = async (id, data) => {
     });
 }
 
+exports.delete = async (id) => {
+    await Customer.findByIdAndDelete(id);
+}

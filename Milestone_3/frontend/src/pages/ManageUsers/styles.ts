@@ -43,7 +43,6 @@ export const AccountSettingsList = styled.div`
     }
 `;
 
-
 export const ContainerProducts = styled.div`
   width: 1320px;
   margin: 50px 0 50px 0;
@@ -127,4 +126,5 @@ export const ProductTable = styled.table`
     border: 0;
     padding: 10px;
   }
+}
 `;
