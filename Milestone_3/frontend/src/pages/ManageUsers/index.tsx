@@ -28,11 +28,12 @@ export default function ManageUsers() {
         try {
             await api.delete(`/customers/${user._id}`);
             toast.success('Success deleting account');
-
-            setTimeout(() => { window.location.replace('http://localhost:3000/manageusers') }, 3000);
         } catch {
             toast.error('Failed trying to delete account');
         }
+
+        const userListUpdated = await api.get(`/customers`);
+        setUserList(userListUpdated.data);
     }
 
     return (

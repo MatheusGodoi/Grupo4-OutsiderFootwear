@@ -28,6 +28,7 @@ export default function Home() {
                 ...product,
                 priceFormatted: formatPrice(product.price)
             }))
+
             setProducts(data);
         }
 
@@ -49,28 +50,34 @@ export default function Home() {
         <>
             <ProductListContainer>
                 <ProductList>
+
                     {products.map(product => (
-                        <li key={product._id}>
-                            <Link
-                                to="/productinfo"
-                                onClick={() => {
-                                    localStorage.setItem("@Group4:productInfo",
-                                        JSON.stringify(product))
-                                }}
-                            >
-                                <img src={product.image} alt="product" />
-                            </Link>
-                            <p>{product.title}</p>
-                            <Button
-                                type="button"
-                                onClick={() => handleAddProduct(product._id)}
-                            >
-                                <p>{product.priceFormatted}</p>
-                                <img src={addToCart} alt="add-to-cart" />
-                                <p>{cartItemsAmount[product._id] || 0}</p>
-                            </Button>
-                        </li>
-                    ))}
+                        product.amount > 0 ?
+                            (
+                                <li key={product._id}>
+                                    <Link
+                                        to="/productinfo"
+                                        onClick={() => {
+                                            localStorage.setItem("@Group4:productInfo",
+                                                JSON.stringify(product))
+                                        }}
+                                    >
+                                        <img src={product.image} alt="product" />
+                                    </Link>
+                                    <p>{product.title}</p>
+                                    <Button
+                                        type="button"
+                                        onClick={() => handleAddProduct(product._id)}
+                                    >
+                                        <p>{product.priceFormatted}</p>
+                                        <img src={addToCart} alt="add-to-cart" />
+                                        <p>{cartItemsAmount[product._id] || 0}</p>
+                                    </Button>
+                                </li>
+                            ) :
+                            (<></>)
+                    )
+                    )}
                 </ProductList>
             </ProductListContainer>
         </>

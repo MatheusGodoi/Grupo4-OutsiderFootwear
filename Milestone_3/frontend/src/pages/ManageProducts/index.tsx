@@ -51,10 +51,14 @@ export default function ManageProducts() {
             }
 
             await api.put<Product>(`/products/${product._id}`, updatedProduct);
+
             toast.success('Success updating product informations')
         } catch {
             toast.error('Failed trying to product informations');
         }
+
+        const updatedProducts = await api.get(`/products`);
+        setProducts(updatedProducts.data);
     }
 
     async function removeProduct(product: Product) {
@@ -66,6 +70,9 @@ export default function ManageProducts() {
         } catch {
             toast.error('Failed trying to delete product');
         }
+
+        const updateProducts = await api.get('/products');
+        setProducts(updateProducts.data);
     }
 
     return (
