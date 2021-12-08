@@ -22,8 +22,6 @@ export default function ManageUsers() {
         loadUsers();
     }, [])
 
-    console.log(userList.map(user => user.name));
-
     async function deleteUser(user: Customer) {
         try {
             await api.delete(`/customers/${user._id}`);

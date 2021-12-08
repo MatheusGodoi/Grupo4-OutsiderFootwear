@@ -73,8 +73,6 @@ export default function Cart() {
                         const productObj = await api.get(`/products/${product._id}`);
                         productObj.data.amount -= product.amount;
 
-                        console.log(productObj.data.amount);
-
                         await api.put<Product>(`products/${product._id}`, productObj.data)
                     }
                     updateProductAmount();
