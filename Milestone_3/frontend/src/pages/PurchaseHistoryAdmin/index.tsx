@@ -18,8 +18,8 @@ export default function PurchaseHistoryAdmin() {
                 const customer = JSON.parse(customerFromStorage);
                 const orderList: Order[] = [];
 
-                allOrders.data.map(order => {
-                    if (customer._id == order.customer._id) {
+                allOrders.data.forEach(order => {
+                    if (customer._id === order.customer._id) {
                         orderList.push(order);
                     }
                 });

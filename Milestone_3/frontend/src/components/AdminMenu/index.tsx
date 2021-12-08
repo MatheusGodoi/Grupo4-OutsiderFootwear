@@ -8,8 +8,8 @@ export default function AdminMenu() {
                 <Link to="/purchasehistoryadmin">Purchase History</Link>
                 <hr></hr>
                 <Link to="/manageaccountadmin"><strong>Account</strong></Link>
-                <a>Notifications</a>
-                <a>Help</a>
+                <p>Notifications</p>
+                <p>Help</p>
                 {/* These three should appear only when the user is a system admin */}
                 <hr></hr>
                 <Link to="/manageproducts">Manage Products</Link>
