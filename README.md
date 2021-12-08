@@ -9,10 +9,15 @@ Henrique Hiram Libutti Núñez      - 11275300
 ---
 
 # Table of Contents
-1. [Description](#description)
-2. [Project Report](#project-report)
-   1. [Milestone 1](#milestone-1)
-   2. [Milestone 2](#milestone-2)
+- [SCC0219 Web Development - 2° Semestre 2021](#scc0219-web-development---2-semestre-2021)
+    - [Grupo 4](#grupo-4)
+- [Table of Contents](#table-of-contents)
+- [Outsider Footwear - Grupo 4](#outsider-footwear---grupo-4)
+  - [Description](#description)
+  - [Project Report](#project-report)
+    - [Milestone 1](#milestone-1)
+    - [Milestone 2](#milestone-2)
+    - [Milestone 3](#milestone-3)
 
 <img src="Logo-Normal.png" alt="Outsider-Footwear-logo" style="width:250px;"/>
 
@@ -32,19 +37,24 @@ Link para o Diagrama de Navegação: [Navigation Diagram](https://www.figma.com/
 ### Milestone 2
 Link para o relatório do projeto: [Project Report PDF](.//Milestone_2%2FProject%20Report%20-%20Outsider%20Footwear.pdf) ou [Project Report Drive](https://docs.google.com/document/d/1ccR2Xns_y1Fyk9wGvozxlP0hUqbtEEgycDfvJgbr1QQ/edit?usp=sharing)<br>
 
+### Milestone 3
+Link para o relatório do projeto: [Project Report PDF](.//Milestone_3%2FProject%20Report%20-%20Outsider%20Footwear.pdf) ou [Project Report Drive](https://docs.google.com/document/d/1AzAkLynt1zqODQ8tN5RjXZ716q6YD_-fGaDSP4dgVbo/edit?usp=sharing)<br>
+
 **Build Procedures:** 
 Para fazer o build do projeto e executar, temos que seguir alguns passos.
-Primeiro, temos que instalar os pacotes do projeto:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn install*<br>
+Primeiro, temos que instalar os pacotes do projeto tanto no *frontend* como no *backend*:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/backend/*yarn install*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/frontend/*yarn install*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm install global*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/backend/*npm install global*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/frontend/*npm install global*<br>
 
-Depois, temos que executar o nosso Backend, que se trata apenas de uma API para ler um json e nos servir os produtos:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn server*<br>
+Depois, temos que executar o nosso Backend, que se trata da nossa conexão do MongoDB com os clientes e produtos:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/backend/*yarn start*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm run server*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/backend/*npm start*<br>
 
-Com o json server rodando, podemos executar o frontend e acessar o site,com o comando:<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*yarn start*<br>
+Com o backend rodando, podemos executar o frontend e acessar o site,com o comando:<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/frontend/*yarn start*<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ou<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;*npm start*<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Milestone_3/frontend/*npm start*<br>
