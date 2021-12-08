@@ -1,5 +1,3 @@
-import { useCart } from '../../hooks/useCart';
-import { formatPrice } from '../../util/format';
 import { Container, PurchaseHistorySettings, PurchaseHistoryList, ContainerProducts, ProductTable } from "./styles"
 
 import AdminMenu from '../../components/AdminMenu';
@@ -19,20 +17,20 @@ export default function PurchaseHistoryAdmin() {
             if (customerFromStorage) {
                 const customer = JSON.parse(customerFromStorage);
                 const orderList: Order[] = [];
-                
+
                 allOrders.data.map(order => {
-                if (customer._id == order.customer._id) {
+                    if (customer._id == order.customer._id) {
                         orderList.push(order);
                     }
                 });
-                
+
                 setOrder(orderList);
 
             } else {
                 alert('Erro')
             }
         }
-        
+
         loadProducts();
     }, []);
 
@@ -57,21 +55,21 @@ export default function PurchaseHistoryAdmin() {
                             </tr>
                         </thead>
                         <tbody>
-                        {order.map(product => 
-                                    (
-                                    <tr key={product._id}>
+                            {order.map(product =>
+                            (
+                                <tr key={product._id}>
 
-                                        <td>
-                                            <p>{product._id}</p>
-                                        </td>
-                                        <td>
-                                            <p>{product.status}</p>
-                                        </td>
-                                        <td>
-                                            <p>{product.createDate}</p>
-                                        </td>
-                                    </tr>
-                        ))}
+                                    <td>
+                                        <p>{product._id}</p>
+                                    </td>
+                                    <td>
+                                        <p>{product.status}</p>
+                                    </td>
+                                    <td>
+                                        <p>{product.createDate}</p>
+                                    </td>
+                                </tr>
+                            ))}
                         </tbody>
                     </ProductTable>
 

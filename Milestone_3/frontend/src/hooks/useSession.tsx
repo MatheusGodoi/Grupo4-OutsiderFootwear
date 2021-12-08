@@ -16,7 +16,6 @@ const SessionContext = createContext<SessionContextData>({} as SessionContextDat
 
 export function SessionProvider({ children }: SessionProviderProps): JSX.Element {
     const [session, setSession] = useState<Customer>(() => {
-        console.log('atualizando session')
         const storagedSession = localStorage.getItem('@Group4:customer');
 
         if (storagedSession) {

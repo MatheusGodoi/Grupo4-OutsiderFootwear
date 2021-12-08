@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Container, Button, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
+import { Container, UserInput, UserFieldsContainer, PasswordInput } from "./styles"
 
 import signInImg from '../../assets/undraw_enter_uhqk_1.svg'
 import { Customer } from '../../../type';
@@ -9,10 +9,6 @@ import { useSession } from '../../hooks/useSession';
 
 export default function SignIn() {
   const { updateSession } = useSession();
-
-  function handleUpdateSession() {
-    updateSession();
-  }
 
   async function loginUser() {
     try {
