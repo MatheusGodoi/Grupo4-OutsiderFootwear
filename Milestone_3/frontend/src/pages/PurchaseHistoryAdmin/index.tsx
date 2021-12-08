@@ -49,7 +49,6 @@ export default function PurchaseHistoryAdmin() {
                         <thead>
                             <tr>
                                 <th>Order ID</th>
-                                <th aria-label="title" />
                                 <th>Status</th>
                                 <th>Created Time</th>
                             </tr>
